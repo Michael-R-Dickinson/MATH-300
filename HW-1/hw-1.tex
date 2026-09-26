@@ -160,7 +160,15 @@ Describe the set of points $z$ in the complex plane that satisfies each of the f
   |z-1| = |z+i|
 \]
 \begin{solution}
-  % solution
+  \begin{align*}
+    |z-1| &= |z+i| \\
+    \sqrt{(x-1)^2 + y^2} &= \sqrt{x^2 + (y+1)^2} && \text{substituting } z = x+yi \\
+    (x-1)^2 + y^2 &= x^2 + (y+1)^2 && \text{squaring both sides} \\
+    x^2 - 2x + 1 + y^2 &= x^2 + y^2 + 2y + 1 \\
+    -2x &= 2y && \text{canceling terms} \\
+    y &= -x
+  \end{align*}
+  Thus the set satisfying $|z-1| = |z+i|$ is $\{x + yi : y = -x,\ x, y \in \mathbb{R}\}$, the perpendicular bisector of $1$ and $-i$.
 \end{solution}
 
 \subsubsection*{1.2.7 (e)}
@@ -275,7 +283,7 @@ Find the argument of each of the following complex numbers and write each in pol
   \]
   Thus we write:
   \[
-    z = 4\left(\cos\left(\frac{5\pi}{6}\right) + i\sin\left(\frac{5\pi}{6}\right)\right)
+    z = 4\left(\cos\left(-\frac{5\pi}{6}\right) + i\sin\left(-\frac{5\pi}{6}\right)\right)
   \]
 \end{solution}
 
@@ -286,19 +294,19 @@ Find the argument of each of the following complex numbers and write each in pol
 \begin{solution}
   We begin by separating the real and imaginary components of $z = \frac{-1+\sqrt{3}i}{2+2i}$ by multiplying the numerator and denominator by the conjugate of the denominator:
   \[
-    z = (-2 + 2\sqrt{3}) + i(2 + 2\sqrt{3})
+    z = \frac{(-2 + 2\sqrt{3}) + i(2 + 2\sqrt{3})}{8}
   \]
   Then taking the inverse tangent:
   \[
-    \theta = \arctan\left(\frac{2+2\sqrt{3}}{-2+2\sqrt{3}}\right) = \frac{1}{12}\pi \quad \text{which is already in the 1st quadrant}
+    \theta = \arctan\left(\frac{2+2\sqrt{3}}{-2+2\sqrt{3}}\right) = \frac{5}{12}\pi \quad \text{which is already in the 1st quadrant}
   \]
   And computing the absolute:
   \[
-    r = |z| = 4\sqrt{2}
+    r = |z| = \frac{\sqrt{2}}{2}
   \]
   Finally:
   \[
-    z = 4\sqrt{2}\left(\cos\left(\frac{1}{12}\pi\right) + i\sin\left(\frac{1}{12}\pi\right)\right)
+    z = \frac{\sqrt{2}}{2}\left(\cos\left(\frac{5}{12}\pi\right) + i\sin\left(\frac{5}{12}\pi\right)\right)
   \]
 \end{solution}
 
