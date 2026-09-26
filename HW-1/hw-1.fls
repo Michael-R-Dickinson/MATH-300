@@ -2,7 +2,7 @@ PWD /Users/big_m/Documents/Classes/MATH-300/HW-1
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT hw-1.tex
+INPUT /Users/big_m/Documents/Classes/MATH-300/HW-1/hw-1.tex
 OUTPUT hw-1.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
