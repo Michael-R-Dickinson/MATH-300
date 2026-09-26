@@ -2,6 +2,7 @@
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -20,7 +21,14 @@ Write the number in the form $a + bi$:
   \frac{(8+2i)-(1-i)}{(2+i)^2}
 \]
 \begin{solution}
-  % solution
+  Rearranging:
+  \begin{align*}
+    \frac{(8+2i)-(1-i)}{(2+i)^2}
+      &= \frac{(8+2i)-(1-i)}{3+4i} \\
+      &= \frac{(8+2i)-(1-i)}{3+4i} \cdot \frac{3-4i}{3-4i} \\
+      &= \frac{33-19i}{25} \\
+      &= \frac{33}{25} - \frac{19}{25}i
+  \end{align*}
 \end{solution}
 
 \subsection*{1.1.10}
@@ -29,13 +37,23 @@ Write the number in the form $a + bi$:
   \left[\frac{2+i}{6i-(1-2i)}\right]^2
 \]
 \begin{solution}
-  % solution
+  \begin{align*}
+    \left(\frac{2+i}{6i-(1-2i)}\right)^2
+      &= \frac{(2+i)^2}{(-1+8i)^2} \\
+      &= \frac{4+4i-1}{1-16i-64} \\
+      &= \frac{3+4i}{-63-16i} \\
+      &= \frac{(3+4i)(-63+16i)}{(-63-16i)(-63+16i)} \\
+      &= \frac{-189+48i-252i-64}{63^2+16^2} \\
+      &= \frac{-253-204i}{63^2+16^2} \\
+      &= \frac{-253}{63^2+16^2} + \frac{-204i}{63^2+16^2}
+  \end{align*}
 \end{solution}
 
 \subsection*{1.1.14}
 Show that $\operatorname{Re}(iz) = -\operatorname{Im} z$ for every complex number $z$.
 \begin{proof}
-  % solution
+  Write $z = x + yi$ where $\operatorname{Re}(z) = x$ and $\operatorname{Im}(z) = y$.
+  Then $iz = xi - y$ and $\operatorname{Re}(iz) = -y = -\operatorname{Im}(z)$.
 \end{proof}
 
 \subsection*{1.1.15}
@@ -44,7 +62,36 @@ Let $k$ be an integer. Show that
   i^{4k} = 1, \quad i^{4k+1} = i, \quad i^{4k+2} = -1, \quad i^{4k+3} = -i.
 \]
 \begin{proof}
-  % solution
+  \textbf{1.}
+  \[
+    i^{4k} = (i^2)^{2k} = ((-1)^2)^k = 1^k
+  \]
+  Because $1^k = 1 \quad \forall k \in \mathbb{Z}$.
+
+  \textbf{2.}
+  \begin{align*}
+    i^{4k+1} &= i^{4k} \cdot i \\
+      &= 1 \cdot i && \text{we can substitute the result of 1.1.15 part 1} \\
+      &= i
+  \end{align*}
+
+  \textbf{3.}
+  \begin{align*}
+    i^{4k+2} &= i^{4k} \cdot i^2 \\
+      &= 1 \cdot i^2 && \text{using the result from 1.1.15 part 1} \\
+      &= i^2 \\
+      &= -1
+  \end{align*}
+
+  \textbf{4.}
+  \begin{align*}
+    i^{4k+3} &= i^{4k} \cdot i^3 \\
+      &= 1 \cdot i^3 && \text{using the result from 1.1.15 part 1} \\
+      &= i^3 \\
+      &= i^2 \cdot i \\
+      &= -1 \cdot i \\
+      &= -i
+  \end{align*}
 \end{proof}
 
 \subsection*{1.1.20}
@@ -55,19 +102,51 @@ Solve each of the following equations for $z$.
   (2-i)z + 8z^2 = 0
 \]
 \begin{solution}
-  % solution
+  \begin{align*}
+    (2-i)z + 8z^2 &= 0 \\
+    z\bigl((2-i) + 8z\bigr) &= 0
+  \end{align*}
+  Thus:
+  \[
+    z = 0 \text{ or } z = \frac{-2+i}{8}
+  \]
 \end{solution}
 
 \subsection*{1.1.22}
 Find all solutions to the equation $z^4 - 16 = 0$.
 \begin{solution}
-  % solution
+  \begin{align*}
+    z^4 - 16 &= 0 \\
+    (z^2-4)(z^2+4) &= 0
+  \end{align*}
+  Thus we solve each root independently:
+  \begin{gather*}
+    (z^2-4) = 0 \implies z = \pm 2 \\
+    (z^2+4) = 0 \implies z = \pm 2i
+  \end{gather*}
+  Thus all solutions are: $z = \{2, -2, 2i, -2i\}$.
 \end{solution}
 
 \subsection*{1.1.24}
 Let $z$ be a complex number such that $\operatorname{Im} z > 0$. Prove that $\operatorname{Im}(1/z) < 0$.
 \begin{proof}
-  % solution
+  Let $z = x + yi$ with $\operatorname{Im}(z) > 0$, so $y > 0$. Thus:
+  \begin{align*}
+    \frac{1}{z} &= \frac{1}{x+yi} \\
+      &= \frac{x-yi}{x^2+y^2} && \text{multiplying by the conjugate} \\
+      &= \frac{x}{x^2+y^2} + \frac{-yi}{x^2+y^2} && \text{separating the real and imaginary components}
+  \end{align*}
+  Thus taking the imaginary component:
+  \[
+    \operatorname{Im}\left(\frac{1}{z}\right) = \frac{-y}{x^2+y^2}
+  \]
+  The denominator is positive because any $a^2$ for $a \in \mathbb{R}$ is positive and sums of positives are also positive.
+  The numerator is negative because $y > 0$ so $-y < 0$.
+  Finally we know the whole fraction is negative: $u, v \in \mathbb{R},\ u < 0,\ v > 0 \implies \frac{u}{v} < 0$.
+  Thus:
+  \[
+    \operatorname{Im}\left(\frac{1}{z}\right) < 0
+  \]
 \end{proof}
 
 % ============================================================
@@ -89,7 +168,14 @@ Describe the set of points $z$ in the complex plane that satisfies each of the f
   |z| = \operatorname{Re} z + 2
 \]
 \begin{solution}
-  % solution
+  \begin{align*}
+    |z| &= \operatorname{Re}(z) + 2 \\
+    \sqrt{x^2+y^2} &= x + 2 && \text{substituting } z = x+yi \text{ such that } \operatorname{Re}(z) = x \\
+    x^2 + y^2 &= x^2 + 4x + 4 && \text{squaring both sides} \\
+    y^2 &= 4x + 4 \\
+    y &= \pm\sqrt{4x+4}
+  \end{align*}
+  Thus the set satisfying $|z| = \operatorname{Re}(z) + 2$ is $\{x + yi : y = \pm\sqrt{4x+4},\ x, y \in \mathbb{R}\}$.
 \end{solution}
 
 \subsubsection*{1.2.7 (f)}
@@ -97,7 +183,38 @@ Describe the set of points $z$ in the complex plane that satisfies each of the f
   |z-1| + |z+1| = 7
 \]
 \begin{solution}
-  % solution
+  We begin with:
+  \[
+    |z-1| + |z+1| = 7
+  \]
+  Substituting in the following for the absolutes and naming them $A$ and $B$ respectively:
+  \begin{align*}
+    A &= |z-1| = \sqrt{(x-1)^2 + y^2} \\
+    B &= |z+1| = \sqrt{(x+1)^2 + y^2}
+  \end{align*}
+  We get:
+  \begin{align*}
+    A &= 7 - B \\
+    A^2 &= (7-B)^2 && \text{we can square both sides} \\
+    \intertext{and substituting the expression for $A$ from the definition of the absolute:}
+    (x-1)^2 + y^2 &= (7-B)^2 \\
+    (x-1)^2 + y^2 &= 49 - 14B + B^2 \\
+    \intertext{substituting the expression for $B$ from the definition of the absolute:}
+      &= 49 - 14B + (x+1)^2 + y^2 \\
+    (x-1)^2 &= 49 - 14B + (x+1)^2 && \text{and canceling terms} \\
+    x^2 - 2x + 1 &= 49 - 14B + x^2 + 2x + 1 \\
+    14B &= 4x + 49 && \text{simplifying} \\
+    \intertext{finally substituting in $B$ for its definition from the absolute and simplifying further:}
+    49 &= 14\sqrt{(x+1)^2 + y^2} - 4x \\
+    49^2 &= \left(14\sqrt{(x+1)^2 + y^2} - 4x\right)^2 \\
+    49^2 + 392x + 16x^2 &= 14^2(x^2 + 2x + 1 + y^2) \\
+    0 &= 180x^2 + 196 - 49^2 + 169y^2 \\
+    2205 &= 180x^2 + 196y^2
+  \end{align*}
+  Thus the set satisfying $|z-1| + |z+1| = 7$ is:
+  \[
+    \{x + yi : 2205 = 180x^2 + 196y^2,\ x, y \in \mathbb{R}\}
+  \]
 \end{solution}
 
 \subsection*{1.2.16}
@@ -106,7 +223,33 @@ Prove that if $|z| = 1$ $(z \neq 1)$, then
   \operatorname{Re}\left[\frac{1}{1-z}\right] = \frac{1}{2}.
 \]
 \begin{proof}
-  % solution
+  Rearranging $\frac{1}{1-z}$ to separate the real and imaginary components, we get:
+  \begin{align*}
+    \frac{1}{1-z} &= \frac{1}{1-(x+yi)} \\
+      &= \frac{1}{(1-x) - yi} \cdot \frac{(1-x) + yi}{(1-x) + yi} \\
+    \intertext{which is well defined because $z \neq 1 \implies$ the denominator $(1-x) + yi \neq 0$}
+      &= \frac{(1-x) + yi}{(1-x)^2 + y^2} \\
+      &= \frac{1-x}{(1-x)^2 + y^2} + \frac{yi}{(1-x)^2 + y^2}
+  \end{align*}
+  Thus taking just the real component:
+  \[
+    \operatorname{Re}\left(\frac{1}{1-z}\right) = \frac{1-x}{(1-x)^2 + y^2}
+  \]
+  Now from $|z| = 1$ we can expand the absolute and rearrange algebraically:
+  \begin{align*}
+    1 &= |z| \\
+      &= \sqrt{x^2+y^2} \\
+      &= x^2 + y^2 \\
+    2 - 2x &= x^2 - 2x + 1 + y^2 \\
+      &= (x-1)^2 + y^2 \\
+    1 &= \frac{2-2x}{(x-1)^2 + y^2} \\
+    \intertext{denominator is nonzero because $z \neq 1 \implies (x-1)^2 + y^2 \neq 0$}
+    \frac{1}{2} &= \frac{1-x}{(x-1)^2 + y^2}
+  \end{align*}
+  Which is exactly $\operatorname{Re}\left(\frac{1}{1-z}\right)$. Thus:
+  \[
+    \operatorname{Re}\left(\frac{1}{1-z}\right) = \frac{1}{2}
+  \]
 \end{proof}
 
 % ============================================================
@@ -120,7 +263,20 @@ Find the argument of each of the following complex numbers and write each in pol
   -2\sqrt{3} - 2i
 \]
 \begin{solution}
-  % solution
+  $z = -2\sqrt{3} - 2i$.
+  Find the argument angle $\theta$ and account for the fact that arctan's range is always within the 1st or 4th quadrants:
+  \begin{gather*}
+    \tan\theta = \frac{-2}{-2\sqrt{3}} \implies \theta = \frac{\pi}{6} \\
+    \theta + \pi = \frac{7\pi}{6} \text{ or equivalently } -\frac{5\pi}{6}
+  \end{gather*}
+  The absolute is:
+  \[
+    |-2\sqrt{3} - 2i| = \sqrt{(-2\sqrt{3})^2 + (-2)^2} = 4
+  \]
+  Thus we write:
+  \[
+    z = 4\left(\cos\left(\frac{5\pi}{6}\right) + i\sin\left(\frac{5\pi}{6}\right)\right)
+  \]
 \end{solution}
 
 \subsubsection*{1.3.7 (g)}
@@ -128,7 +284,22 @@ Find the argument of each of the following complex numbers and write each in pol
   \frac{-1+\sqrt{3}\,i}{2+2i}
 \]
 \begin{solution}
-  % solution
+  We begin by separating the real and imaginary components of $z = \frac{-1+\sqrt{3}i}{2+2i}$ by multiplying the numerator and denominator by the conjugate of the denominator:
+  \[
+    z = (-2 + 2\sqrt{3}) + i(2 + 2\sqrt{3})
+  \]
+  Then taking the inverse tangent:
+  \[
+    \theta = \arctan\left(\frac{2+2\sqrt{3}}{-2+2\sqrt{3}}\right) = \frac{1}{12}\pi \quad \text{which is already in the 1st quadrant}
+  \]
+  And computing the absolute:
+  \[
+    r = |z| = 4\sqrt{2}
+  \]
+  Finally:
+  \[
+    z = 4\sqrt{2}\left(\cos\left(\frac{1}{12}\pi\right) + i\sin\left(\frac{1}{12}\pi\right)\right)
+  \]
 \end{solution}
 
 \subsection*{1.3.10}
@@ -139,7 +310,24 @@ Show the following:
   \arg(z_1 z_2 z_3) = \arg z_1 + \arg z_2 + \arg z_3
 \]
 \begin{proof}
-  % solution
+  We know that for two complex numbers $z_1 = r_1(\cos\theta_1 + i\sin\theta_1),\ z_2 = r_2(\cos\theta_2 + i\sin\theta_2) \in \mathbb{C}$:
+  \[
+    z_1 \cdot z_2 = r_1 r_2[\cos(\theta_1 + \theta_2) + i\sin(\theta_1 + \theta_2)]
+  \]
+  Thus, we can apply this to $z_1, z_2, z_3$ by writing $z_1 \cdot z_2$ as $z_a$:
+  \[
+    z_a = r_a(\cos(\theta_a) + i\sin(\theta_a)) \quad \text{with } r_a = r_1 \cdot r_2, \quad \theta_a = \theta_1 + \theta_2
+  \]
+  Then:
+  \begin{align*}
+    z_1 z_2 z_3 = z_a \cdot z_3
+      &= r_a r_3[\cos(\theta_a + \theta_3) + i\sin(\theta_a + \theta_3)] \\
+      &= r_1 r_2 r_3[\cos(\theta_1 + \theta_2 + \theta_3) + i\sin(\theta_1 + \theta_2 + \theta_3)]
+  \end{align*}
+  Taking the argument from the $\sin$ and $\cos$ terms:
+  \[
+    \arg(z_1 z_2 z_3) = \theta_1 + \theta_2 + \theta_3
+  \]
 \end{proof}
 
 \subsubsection*{1.3.10 (b)}
@@ -147,7 +335,31 @@ Show the following:
   \arg\left(\frac{z_1}{z_2}\right) = \arg z_1 - \arg z_2
 \]
 \begin{proof}
-  % solution
+  We can write the argument of $z_2 = x + iy \in \mathbb{C}$ as $\arg(z_2) = \arctan\left(\frac{y}{x}\right) = \theta_2$.
+
+  Taking the conjugate of $z_2$, then solving for its argument:
+  \[
+    \overline{z_2} = x + i(-y)
+  \]
+  Which can be written as $r_2(\cos\theta + i\sin\theta)$ for some angle $\theta$. Solving for $\theta$ by setting the real and imaginary parts equal:
+  \begin{align*}
+    x &= r_2\cos\phi \\
+    y &= r_2\sin\phi \\
+    \frac{-y}{x} &= \tan\phi
+  \end{align*}
+  This leaves:
+  \begin{gather*}
+    \theta = \arctan\left(-\frac{y}{x}\right) \implies -\phi = \arctan\left(\frac{y}{x}\right) = \theta_2 \\[1ex]
+    \therefore \quad z = r_2(\cos(-\theta_2) + i\sin(-\theta_2))
+  \end{gather*}
+  Now we can apply the known identity $z_1 \cdot z_2 = r_1 r_2[\cos(\theta_1 + \theta_2) + i\sin(\theta_1 + \theta_2)]$ such that:
+  \[
+    z_1\overline{z_2} = r_1 r_2[\cos(\theta_1 - \theta_2) + i\sin(\theta_1 - \theta_2)]
+  \]
+  and we can read off the argument:
+  \[
+    \arg(z_1\overline{z_2}) = \theta_1 - \theta_2 = \arg(z_1) - \arg(z_2)
+  \]
 \end{proof}
 
 \subsection*{1.3.12}
@@ -158,7 +370,7 @@ Find the following.
   \operatorname{Arg}(-\pi)
 \]
 \begin{solution}
-  % solution
+  $-\pi$ is purely real valued and negative so its argument is $\arg_0 = \pi$.
 \end{solution}
 
 \subsubsection*{1.3.12 (c)}
@@ -166,7 +378,27 @@ Find the following.
   \operatorname{Arg}(10i)
 \]
 \begin{solution}
-  % solution
+  $10i$ is purely imaginary so its argument is $\arg_0 = \frac{\pi}{2}$.
 \end{solution}
+
+% ============================================================
+\section*{Additional Problem}
+
+\subsection*{$\operatorname{Re}(zw) = \operatorname{Re}(z) \cdot \operatorname{Re}(w)$}
+\begin{proof}
+  It is not true that $\operatorname{Re}(zw) = \operatorname{Re}(z)\operatorname{Re}(w)$.
+
+  Counterexample: $z = 1 + i, \quad w = 1 + i$.
+
+  Plugging into the LHS:
+  \[
+    \operatorname{Re}(zw) = \operatorname{Re}((1+i)(1+i)) = \operatorname{Re}(1 + 2i - 1) = \operatorname{Re}(2i) = 0
+  \]
+  Plugging into the RHS:
+  \[
+    \operatorname{Re}(1+i) \cdot \operatorname{Re}(1+i) = 1
+  \]
+  Thus: $\operatorname{Re}(zw) \neq \operatorname{Re}(z)\operatorname{Re}(w)$.
+\end{proof}
 
 \end{document}
