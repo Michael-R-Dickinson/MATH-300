@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage[english]{babel}
+\usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -9,20 +11,122 @@
 \end{proof}}
 
 \begin{document}
-\section*{Section 1.1}
-\subsection*{1.1.8}
-This is a sample problem statement.
+
+% ============================================================
+\section*{Section 1.4}
+
+\subsection*{1.4.2}
+Write the number in the form $a + bi$.
+
+\subsubsection*{1.4.2 (b)}
+\[
+  2e^{3+i\pi/6}
+\]
+\begin{solution}
+\end{solution}
+
+\subsubsection*{1.4.2 (c)}
+\[
+  e^z, \quad \text{where } z = 4e^{i\pi/3}
+\]
+\begin{solution}
+\end{solution}
+
+\subsection*{1.4.4}
+Write the number in the polar form $re^{i\theta}$.
+
+\subsubsection*{1.4.4 (a)}
+\[
+  \left(\cos\frac{2\pi}{9} + i\sin\frac{2\pi}{9}\right)^3
+\]
+\begin{solution}
+\end{solution}
+
+\subsubsection*{1.4.4 (c)}
+\[
+  \frac{2i}{3e^{4+i}}
+\]
+\begin{solution}
+\end{solution}
+
+\subsection*{1.4.8}
+Show that, for all $z$:
+
+\subsubsection*{1.4.8 (a)}
+\[
+  e^{z+\pi i} = -e^z
+\]
 \begin{proof}
-  I said it so it must be true.
 \end{proof}
 
-\subsection*{1.1.8}
-The overall problem statement for 1.1.8.
-
-\subsubsection*{1.1.8 (a)}
-The specifics of this problem part.
+\subsubsection*{1.4.8 (b)}
+\[
+  \overline{e^z} = e^{\bar{z}}
+\]
 \begin{proof}
-  I said it so it must be true.
 \end{proof}
+
+\subsection*{1.4.17 (d)}
+Describe the curve
+\[
+  z(t) = 3e^{-it} + 2 - i, \quad 0 \le t \le 2\pi.
+\]
+\begin{solution}
+\end{solution}
+
+\subsection*{1.4.22}
+Show that if $n$ is an integer, then
+\[
+  \int_0^{2\pi} e^{in\theta}\,d\theta
+  = \int_0^{2\pi} \cos(n\theta)\,d\theta + i\int_0^{2\pi} \sin(n\theta)\,d\theta
+  =
+  \begin{cases}
+    2\pi & \text{if } n = 0, \\
+    0    & \text{if } n \neq 0.
+  \end{cases}
+\]
+\begin{proof}
+\end{proof}
+
+% ============================================================
+\section*{Section 1.5}
+
+\subsection*{1.5.5}
+Find all the values of the following.
+
+\subsubsection*{1.5.5 (e)}
+\[
+  (i-1)^{1/2}
+\]
+\begin{solution}
+\end{solution}
+
+\subsubsection*{1.5.5 (f)}
+\[
+  \left(\frac{2i}{1+i}\right)^{1/6}
+\]
+\begin{solution}
+\end{solution}
+
+\subsection*{1.5.6 (c)}
+Describe how to construct geometrically the fifth roots of $z_0 = 1 + i$.
+\begin{solution}
+\end{solution}
+
+\subsection*{1.5.7 (c)}
+Solve the equation
+\[
+  z^2 - 2z + i = 0.
+\]
+\begin{solution}
+\end{solution}
+
+\subsection*{1.5.10}
+Find all four roots of $z^4 + 1 = 0$ and use them to deduce the factorization
+\[
+  z^4 + 1 = (z^2 - \sqrt{2}z + 1)(z^2 + \sqrt{2}z + 1).
+\]
+\begin{solution}
+\end{solution}
 
 \end{document}
