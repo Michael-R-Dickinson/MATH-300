@@ -246,7 +246,21 @@ Find all the values of the following.
   \left(\frac{2i}{1+i}\right)^{1/6}
 \]
 \begin{solution}
-  % TODO
+  Simplify the base and write it in polar form:
+  \begin{align*}
+    \frac{2i}{1 + i}
+    &= \frac{2i(1 - i)}{(1 + i)(1 - i)}
+    \\ &= \frac{2i + 2}{2}
+    \\ &= 1 + i
+    \\ &= 2^{1/2} e^{i \frac{\pi}{4}}
+  \end{align*}
+  Take the sixth root and solve based on all forms by adding $2\pi k$ to the angle for $k=0,\dots,5$:
+  \begin{align*}
+    \left(2^{1/2} e^{i \frac{\pi}{4}} \right)^{1/6}
+    &= 2^{1/12} e^{i \left(\frac{\pi}{24} + \frac{2\pi k}{6}\right)}
+    \\ &= 2^{1/12} e^{i \left(\frac{\pi}{24} + \frac{\pi k}{3}\right)}
+    && k = 0,1,2,3,4,5
+  \end{align*}
 \end{solution}
 
 \subsection*{1.5.6 (c)}
