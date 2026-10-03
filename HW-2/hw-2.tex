@@ -23,6 +23,13 @@ Write the number in the form $a + bi$.
   2e^{3+i\pi/6}
 \]
 \begin{solution}
+  \begin{align*}
+    2e^{3 + i\frac{\pi}{6}}
+    &= 2e^3 e^{i\frac{\pi}{6}}
+    \\ &= 2e^3\left(\cos\left(\tfrac{\pi}{6}\right) + i\sin\left(\tfrac{\pi}{6}\right)\right)
+    \\ &= 2e^3\left(\frac{\sqrt{3}}{2} + \frac{1}{2}i\right)
+    \\ &= \sqrt{3}\,e^3 + e^3 i
+  \end{align*}
 \end{solution}
 
 \subsubsection*{1.4.2 (c)}
@@ -30,6 +37,20 @@ Write the number in the form $a + bi$.
   e^z, \quad \text{where } z = 4e^{i\pi/3}
 \]
 \begin{solution}
+  Write the exponent in the form $x + yi$:
+  \begin{align*}
+    z = 4e^{i\frac{\pi}{3}}
+    &= 4\left(\cos\left(\tfrac{\pi}{3}\right) + i\sin\left(\tfrac{\pi}{3}\right)\right)
+    \\ &= 4\left(\frac{1}{2} + \frac{\sqrt{3}}{2}i\right)
+    \\ &= 2 + 2\sqrt{3}\,i
+  \end{align*}
+  Then:
+  \begin{align*}
+    e^z &= e^{2 + 2\sqrt{3}\,i}
+    \\ &= e^2 e^{2\sqrt{3}\,i}
+    \\ &= e^2\left(\cos(2\sqrt{3}) + i\sin(2\sqrt{3})\right)
+    \\ &= e^2\cos(2\sqrt{3}) + e^2\sin(2\sqrt{3})\, i
+  \end{align*}
 \end{solution}
 
 \subsection*{1.4.4}
@@ -40,6 +61,13 @@ Write the number in the polar form $re^{i\theta}$.
   \left(\cos\frac{2\pi}{9} + i\sin\frac{2\pi}{9}\right)^3
 \]
 \begin{solution}
+  \begin{align*}
+    \left(\cos\left(\tfrac{2\pi}{9}\right) + i\sin\left(\tfrac{2\pi}{9}\right)\right)^3
+    &= \left(e^{i\frac{2\pi}{9}}\right)^3
+    \\ &= e^{i\frac{6\pi}{9}}
+    \\ &= e^{i\frac{2\pi}{3}}
+  \end{align*}
+  So $r = 1$ and $\theta = \frac{2\pi}{3}$.
 \end{solution}
 
 \subsubsection*{1.4.4 (c)}
@@ -47,6 +75,14 @@ Write the number in the polar form $re^{i\theta}$.
   \frac{2i}{3e^{4+i}}
 \]
 \begin{solution}
+  Write the numerator in polar form: $2i = 2e^{i\frac{\pi}{2}}$.
+  \begin{align*}
+    \frac{2i}{3e^{4 + i}}
+    &= \frac{2e^{i\frac{\pi}{2}}}{3e^4 e^{i}}
+    \\ &= \frac{2}{3e^4}\, e^{i\frac{\pi}{2}} e^{-i}
+    \\ &= \frac{2}{3e^4}\, e^{i\left(\frac{\pi}{2} - 1\right)}
+  \end{align*}
+  So $r = \frac{2}{3e^4}$ and $\theta = \frac{\pi}{2} - 1$.
 \end{solution}
 
 \subsection*{1.4.8}
@@ -57,6 +93,18 @@ Show that, for all $z$:
   e^{z+\pi i} = -e^z
 \]
 \begin{proof}
+  Let $z = x + yi$.
+  \begin{align*}
+    e^{z + \pi i} &= e^{x + yi + \pi i}
+    \\ &= e^{x + i(y + \pi)}
+    \\ &= e^x(\cos(y + \pi) + i\sin(y + \pi))
+    \\ &= e^x(-\cos(y) - i\sin(y))
+    && \text{by trig identities}
+    \\ &= -e^x(\cos(y) + i\sin(y))
+    \\ &= -e^x e^{yi}
+    \\ &= -e^{x + yi}
+    \\ &= -e^z
+  \end{align*}
 \end{proof}
 
 \subsubsection*{1.4.8 (b)}
@@ -64,14 +112,40 @@ Show that, for all $z$:
   \overline{e^z} = e^{\bar{z}}
 \]
 \begin{proof}
+  Let $z = x + yi$.
+  \begin{align*}
+    \overline{e^z} &= \overline{e^{x + yi}}
+    \\ &= \overline{e^x(\cos(y) + i\sin(y))}
+    \\ &= \overline{e^x \cos y + i e^x \sin y}
+    \\ &= e^x \cos y - i e^x \sin y
+    \\ &= e^x(\cos y - i \sin y)
+    \\ &= e^x(\cos (-y) + i \sin(-y))
+    && \text{trig identities}
+    \\ &= e^x e^{-yi}
+    \\ &= e^{x - yi}
+    \\ &= e^{\overline{z}}
+  \end{align*}
 \end{proof}
 
-\subsection*{1.4.17 (d)}
+\subsection*{1.4.17}
+Discuss why $z(t) = e^{it}$, $0 \le t \le 2\pi$, describes the unit circle traversed counterclockwise.
+\begin{solution}
+  It is on the unit circle with magnitude $1$:
+  $z(t)=e^{it}=\cos(t)+i\sin(t)$, so taking the absolute value: $\lvert z \rvert=\sqrt{\cos^2(t)+\sin^2(t)}=1$.
+  Also the coordinates $(\cos(t),\sin(t))$ describe points around the unit circle with angle $t$ because the argument $\operatorname{Arg}(z(t))=t$. This also implies that $t$ traverses the unit circle CCW.
+\end{solution}
+
+\subsubsection*{1.4.17 (d)}
 Describe the curve
 \[
   z(t) = 3e^{-it} + 2 - i, \quad 0 \le t \le 2\pi.
 \]
 \begin{solution}
+  \[
+    z(t) = 3e^{-it} + 2 - i = (2 - i) + 3e^{-it}
+  \]
+  So $z(t)$ is a circle centered at $2 - i$ with radius $3$, since at every $t$, $\lvert z(t) - (2 - i) \rvert=\lvert 3e^{-it} \rvert=3$.
+  $e^{it}$ goes around CCW, so $e^{-it}$ goes around in the inverse order. Thus $z(t)$ traverses the circle CW, once, starting and ending at $z(0) = z(2\pi) = 5 - i$.
 \end{solution}
 
 \subsection*{1.4.22}
@@ -86,6 +160,59 @@ Show that if $n$ is an integer, then
   \end{cases}
 \]
 \begin{proof}
+  \begin{align*}
+    \int_0^{2\pi} e^{in\theta} \, d\theta
+    &= \int_0^{2\pi} \cos(\theta n)
+    + i\sin(\theta n)\, d\theta
+    \\ &= \int_0^{2\pi} \cos(\theta n) \, d\theta
+    + i \int_0^{2\pi} \sin(\theta n) \, d\theta
+  \end{align*}
+  since integration is linear over addition and $i$ is a constant.
+
+  For $n\neq0$:
+  \begin{align*}
+    \int_0^{2\pi} \cos(\theta) \, d\theta
+    &= \int_0^{\pi} \cos(\theta) \, d\theta
+    + \int_{\pi}^{2 \pi} \cos(\theta) \, d\theta
+    \\ &= \int_0^{\pi} \cos(\theta) \, d\theta
+    + \int_0^{\pi} \cos(\theta + \pi) \, d\theta
+    \\ &= \int_0^{\pi} \cos(\theta) \, d\theta
+    - \int_0^{\pi} \cos(\theta) \, d\theta
+    && \text{trig identity}
+    \\ &= 0
+  \end{align*}
+  And the exact same for $\sin(\theta n)$:
+  \begin{align*}
+    \int_0^{2\pi} \sin(\theta) \, d\theta
+    &= \int_0^{\pi} \sin(\theta) \, d\theta
+    - \int_0^{\pi} \sin(\theta) \, d\theta
+    && \text{trig identity}
+    \\ &= 0
+  \end{align*}
+  So finally, for $n \neq 0$:
+  \[
+    \int_0^{2\pi} \cos(\theta n) \, d\theta
+    + i \int_0^{2\pi} \sin(\theta n) \, d\theta
+    = 0
+  \]
+
+  If $n = 0$:
+  \[
+    \sin(\theta \cdot 0) = 0 \quad \cos(\theta \cdot 0) = 1
+  \]
+  Thus:
+  \begin{align*}
+    \int_0^{2\pi}0 \, d\theta &= 0
+    \\
+    \int_0^{2\pi}1 \, d\theta &= 2\pi
+  \end{align*}
+  And
+  \[
+    \int_0^{2\pi} \cos(\theta n) \, d\theta
+    + i \int_0^{2\pi} \sin(\theta n) \, d\theta
+    = 2\pi + i \cdot 0
+    = 2\pi
+  \]
 \end{proof}
 
 % ============================================================
@@ -99,6 +226,19 @@ Find all the values of the following.
   (i-1)^{1/2}
 \]
 \begin{solution}
+  Write $(i-1)^{1/2}$ as $\left(2^{\frac{1}{2}}e^{i \frac{3\pi}{4}}\right)^{1/2}$.
+  Square root and solve based on all equivalent forms by adding $2\pi k$ to the angle for $k=0,1$:
+  \begin{align*}
+    \left(2^{1/2} e^{i \frac{3\pi}{4}} \right)^{1/2}
+    &= 2^{1/4} e^{i \left(\frac{3\pi}{8} + \frac{2\pi k}{2}\right)}
+    && k = 0,1
+  \end{align*}
+  Thus we have roots:
+  \begin{align*}
+    \left(2^{1/2} e^{i \frac{3\pi}{4}} \right)^{1/2}
+    &= 2^{\frac{1}{4}} e^{i \frac{3\pi}{8}},\; 2^{\frac{1}{4}} e^{i \frac{11\pi}{8}}
+    \\ &= \pm 2^{\frac{1}{4}} e^{i \frac{3\pi}{8}}
+  \end{align*}
 \end{solution}
 
 \subsubsection*{1.5.5 (f)}
@@ -106,11 +246,20 @@ Find all the values of the following.
   \left(\frac{2i}{1+i}\right)^{1/6}
 \]
 \begin{solution}
+  % TODO
 \end{solution}
 
 \subsection*{1.5.6 (c)}
 Describe how to construct geometrically the fifth roots of $z_0 = 1 + i$.
 \begin{solution}
+  In polar form $1+i$ can be represented as $2^{\frac{1}{2}}e^{\frac{\pi}{4}i}$.
+  Geometrically we need to find the regular polygon with 5 edges centered on the origin and with a point at a root of $2^{\frac{1}{2}}e^{\frac{\pi}{4}i}$.
+  We compute the root:
+  \[
+    \left(2^{\frac{1}{2}} e^{\frac{\pi}{4}i} \right)^{\frac{1}{5}}
+    = 2^{1/10} e^{\frac{\pi}{20}i}
+  \]
+  So we have radius from the origin $2^{1/10}$ and angle $\frac{\pi}{20}$. Draw a circle about the origin starting from this point and with this radius, and create a regular polygon along this circle. The 5 points on it are the roots.
 \end{solution}
 
 \subsection*{1.5.7 (c)}
@@ -119,6 +268,20 @@ Solve the equation
   z^2 - 2z + i = 0.
 \]
 \begin{solution}
+  Apply the quadratic formula:
+  \[
+    \frac{2 \pm \sqrt{4 - 4i}}{2} = 1 \pm (1 - i)^{1/2}
+  \]
+  Computing $(1-i)^{1/2}$ via its polar form $2^{1/2}e^{i \frac{-\pi}{4}}$:
+  \[
+    (1 - i)^{1/2}
+    = 2^{1/4} e^{i \frac{-\pi}{8}},\; 2^{1/4} e^{i \frac{7\pi}{8}}
+    = \pm 2^{1/4} e^{i \frac{-\pi}{8}}
+  \]
+  So we are left with:
+  \[
+    1 \pm 2^{1/4} e^{i \frac{-\pi}{8}}
+  \]
 \end{solution}
 
 \subsection*{1.5.10}
@@ -127,6 +290,20 @@ Find all four roots of $z^4 + 1 = 0$ and use them to deduce the factorization
   z^4 + 1 = (z^2 - \sqrt{2}z + 1)(z^2 + \sqrt{2}z + 1).
 \]
 \begin{solution}
+  Finding roots of $z^4=-1$ by writing in polar form $z^4=e^{\pi i}$:
+  \begin{align*}
+    \text{roots}
+    &= \left\{e^{i \left(\frac{\pi}{4} + \frac{k \pi}{2}\right)}: k = 0,1,2,3 \right\}
+    \\ &= \left\{ \pm e^{i \frac{\pi}{4}}, \pm e^{i \frac{3\pi}{4}} \right\}
+    \\ &= \left\{\tfrac{\sqrt{2}}{2}z_0: z_0 \in \{(1 + i),(1 - i),(-1 + i),(-1 - i)\} \right\}
+  \end{align*}
+  So therefore we can rearrange into:
+  \begin{align*}
+    z^4 + 1
+    &= \left(z - \tfrac{\sqrt{2}}{2}(1 + i)\right)\left(z - \tfrac{\sqrt{2}}{2}(1 - i)\right)\left(z - \tfrac{\sqrt{2}}{2}(-1 + i)\right)\left(z - \tfrac{\sqrt{2}}{2}(-1 - i)\right)
+    \\ &= \left(\left(z - \tfrac{\sqrt{2}}{2}\right)^2 + \tfrac{1}{2}\right)\left(\left(z + \tfrac{\sqrt{2}}{2}\right)^2 + \tfrac{1}{2}\right) \quad \text{grouping by conjugates}
+    \\ &= \left(z^2 - \sqrt{2}\,z + 1\right)\left(z^2 + \sqrt{2}\,z + 1\right)
+  \end{align*}
 \end{solution}
 
 \end{document}
