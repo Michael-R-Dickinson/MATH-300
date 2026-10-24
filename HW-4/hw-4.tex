@@ -1,0 +1,318 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{solution}{
+\begin{proof}[Solution]}{
+\end{proof}}
+
+\begin{document}
+
+% ============================================================
+\section*{Section 2.3}
+
+\subsection*{2.3.7}
+Use the differentiation rules to find the derivative.
+
+\subsubsection*{2.3.7 (c)}
+\[
+  f(z) = \frac{z^2 - 9}{iz^3 + 2z + \pi}
+\]
+\begin{solution}
+  \begin{align*}
+    f'(z)
+    &= \frac{2z\left(iz^3 + 2z + \pi\right) - \left(3iz^2 + 2\right)\left(z^2 - 9\right)}{\left(iz^3 + 2z + \pi\right)^2} \quad \text{by rule (8)}
+    \\ &= \frac{2iz^4 + 4z^2 + 2\pi z - \left[3iz^4 - 27iz^2 + 2z^2 - 18\right]}{\left(iz^3 + 2z + \pi\right)^2}
+    \\ &= \frac{-iz^4 + z^2(2 + 27i) + 2\pi z + 18}{\left(iz^3 + 2z + \pi\right)^2}
+  \end{align*}
+\end{solution}
+
+\subsection*{2.3.9}
+Determine the points at which the function is not analytic.
+
+\subsubsection*{2.3.9 (d)}
+\[
+  z^2\left(2z^2 - 3z + 1\right)^{-2}
+\]
+\begin{solution}
+  Begin by finding the zeros of the expression inside the square in the denominator
+  $(2z^2 - 3z + 1)$, which are the points where the function is non-analytic.
+
+  The quadratic formula gives roots $\frac{1}{2}, 1$. Thus we can factor:
+  \[
+    \frac{z^2}{\left[\left(z - \frac{1}{2}\right)(z - 1)\right]^2}
+    = \frac{z^2}{\left(z - \frac{1}{2}\right)^2(z - 1)^2}
+  \]
+  The denominator $= 0$ at the roots, so the function is non-analytic at
+  $z = \frac{1}{2}$ and $z = 1$.
+\end{solution}
+
+\subsection*{2.3.10}
+Let $f(z) = |z|^2$. Use the definition of the derivative to show that $f$ is
+differentiable at $z = 0$ but not at any other point.
+\begin{solution}
+  Write the derivative from the definition and simplify algebraically exactly as given in the hint:
+  \begin{align*}
+    f'(z)
+    &= \lim_{\Delta z \to 0} \frac{\lvert z_0 + \Delta z \rvert^2 - \lvert z_0 \rvert^2}{\Delta z}
+    \\ &= \lim_{\Delta z \to 0} \left(\overline{z_0} + \overline{\Delta z} + z_0 \frac{\overline{\Delta z}}{\Delta z}\right)
+    \\ &= \lim_{\Delta z \to 0} \left(\overline{z_0} + \overline{\Delta z}\right)
+       + \lim_{\Delta z \to 0} \left(z_0 \frac{x - iy}{x + iy}\right)
+  \end{align*}
+  Note that $z_0$ is constant and $\Delta z \to 0$, so the first limit exists and
+  goes to the constant $\overline{z_0}$.
+
+  Take an approach direction for the second limit: $x = \theta y$. Note that
+  $x \to 0 \implies \Delta z \to 0$.
+  \[
+    \lim_{x \to 0} z_0 \left(\frac{x - i\theta x}{x + i\theta x}\right)
+    = z_0 \left(\frac{1 - \theta^2}{1 + \theta^2}\right)
+  \]
+  If $z_0 \neq 0$ the limit depends on the chosen approach angle $\theta$, so the
+  derivative is different for different directions of $\Delta z$ and does not exist.
+
+  If $z_0 = 0$ the limit does not depend on the approach angle and simply equals $0$.
+  So the limit exists.
+\end{solution}
+
+\subsection*{2.3.16}
+Let $f(z) = z^3 + 1$, $z_1 = \frac{-1 + \sqrt{3}i}{2}$, $z_2 = \frac{-1 - \sqrt{3}i}{2}$.
+Show there is no $w$ on the segment from $z_1$ to $z_2$ with
+$f(z_2) - f(z_1) = f'(w)(z_2 - z_1)$.
+\begin{solution}
+  We first divide both sides of the given equation by $z_2 - z_1$ and compute from
+  the given $z_1, z_2$ values:
+  \begin{align*}
+    f'(w) &= \frac{f(z_2) - f(z_1)}{z_2 - z_1}
+    \\ &= \frac{\dfrac{(-1 - \sqrt{3}i)^3}{8} - \dfrac{(-1 + \sqrt{3}i)^3}{8}}{z_2 - z_1}
+    \\ &= \frac{(-1 - \sqrt{3}i)^3 - (-1 + \sqrt{3}i)^3}{-8\sqrt{3}i}
+    \\ &= \frac{-6\sqrt{3}i + 6\sqrt{3}i}{-8\sqrt{3}i} = 0
+    \quad \text{expanding out the cube and simplifying}
+  \end{align*}
+  So we need to find a $w$ satisfying $f'(w) = 0$ where $w$ is on the line between
+  $z_1$ and $z_2$. We can parameterize this line as:
+  \[
+    w = -\frac{1}{2} + xi, \quad x \in \mathbb{R},\ -\frac{\sqrt{3}}{2} < x < \frac{\sqrt{3}}{2}
+  \]
+  Computing the derivative of $f$ and substituting:
+  \[
+    f(w) = w^3 + 1, \qquad f'(w) = 3w^2
+  \]
+  \[
+    3\left(-\frac{1}{2} + xi\right)^2 = 3\left(\frac{1}{4} - xi - x^2\right)
+  \]
+  Set equal to zero and find values of $x$ satisfying the equation:
+  \[
+    \frac{3}{4} - 3x^2 - 3xi = 0
+  \]
+  Match real and imaginary parts:
+  \begin{align*}
+    \text{Im:} \quad & -3x = 0 \implies x = 0
+    \\ \text{Re:} \quad & \frac{3}{4} - 3x^2 = 0 \implies \frac{3}{4} - 0 = \frac{3}{4} \neq 0
+  \end{align*}
+  As no values of $x$ satisfy this, no $w$ on the segment from $z_1$ to $z_2$
+  satisfies $f(z_2) - f(z_1) = f'(w)(z_2 - z_1)$.
+\end{solution}
+
+% ============================================================
+\section*{Section 2.4}
+
+\subsection*{2.4.2}
+Show that $h(z) = x^3 + 3xy^2 - 3x + i(y^3 + 3x^2y - 3y)$ is differentiable on
+the coordinate axes but is nowhere analytic.
+\begin{solution}
+  Write the real and imaginary parts of $h$ as $u, v$ and compute partials:
+  \begin{align*}
+    u &= x^3 + 3xy^2 - 3x, & v &= y^3 + 3x^2y - 3y
+    \\ u_x &= 3x^2 + 3y^2 - 3, & v_y &= 3y^2 + 3x^2 - 3
+    \\ u_y &= 6xy, & v_x &= 6xy
+  \end{align*}
+  Check Cauchy-Riemann along the coordinate axes.
+
+  Along the $y$ axis: $x = 0$, $y$ free:
+  \begin{align*}
+    u_x(0,y) &= 0 + 3y^2 - 3 = 3y^2 - 3 = v_y(0,y)
+    \\ u_y(0,y) &= 0 = -v_x(0,y)
+  \end{align*}
+  Along the $x$ axis: $y = 0$, $x$ free:
+  \begin{align*}
+    u_x(x,0) &= 3x^2 + 0 - 3 = 3x^2 - 3 = v_y(x,0)
+    \\ u_y(x,0) &= 0 = -v_x(x,0)
+  \end{align*}
+  Thus $h$ is differentiable along the coordinate axes.
+
+  However, $h$ is non-analytic, as this fails on any open set. Take any deviation
+  $\delta$ from the axes.
+
+  Deviation from the $y$ axis:
+  \[
+    u_y(0 + \delta, y) = 6\delta y = -6\delta y = -v_x(0 + \delta, y)
+  \]
+  Only equal at $\delta = 0$ (for $y \neq 0$).
+
+  Deviation from the $x$ axis:
+  \[
+    u_y(x, 0 + \delta) = 6x\delta = -6x\delta = -v_x(x, 0 + \delta)
+  \]
+  Only equal at $\delta = 0$ (for $x \neq 0$).
+
+  Thus no nearby point off the axes is differentiable, and an open disk cannot be
+  formed. Thus not analytic. As this holds for arbitrary $x, y$, the function is
+  nowhere analytic.
+\end{solution}
+
+\subsection*{2.4.5}
+Show that $f(z) = e^{x^2 - y^2}\left[\cos(2xy) + i\sin(2xy)\right]$ is entire, and
+find its derivative.
+\begin{solution}
+  By Euler's formula, $\cos(2xy) + i\sin(2xy) = e^{2xyi}$, so:
+  \begin{align*}
+    f(z) &= e^{x^2 - y^2}\, e^{2xyi}
+    \\ &= e^{x^2 + 2xyi - y^2}
+    \\ &= e^{(x + yi)^2}
+    \\ &= e^{z^2}
+  \end{align*}
+  $e^{z^2}$ is entire because it is a composition of entire functions: $z^2$ is a
+  polynomial and $e^z$ is entire, and a composition of entire functions is entire by
+  the chain rule.
+
+  By the chain rule:
+  \[
+    \frac{d}{dz}\left[e^{z^2}\right] = e^{z^2} \cdot 2z
+  \]
+\end{solution}
+
+\subsection*{2.4.6}
+Show that in polar coordinates $(r, \theta)$ the Cauchy-Riemann equations become
+\[
+  \frac{\partial u}{\partial r} = \frac{1}{r}\frac{\partial v}{\partial \theta},
+  \qquad
+  \frac{\partial v}{\partial r} = -\frac{1}{r}\frac{\partial u}{\partial \theta}.
+\]
+\begin{solution}
+  Write $z = re^{i\theta}$, $z_0 = r_0e^{i\theta_0}$, and compute
+  $f'(z_0) = \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}$ along two paths as in the hint.
+
+  Along the ray $\theta = \theta_0$: $z - z_0 = (r - r_0)e^{i\theta_0}$, so
+  \begin{align*}
+    f'(z_0)
+    &= \lim_{r \to r_0} \frac{\left[u(r,\theta_0) - u(r_0,\theta_0)\right] + i\left[v(r,\theta_0) - v(r_0,\theta_0)\right]}{(r - r_0)e^{i\theta_0}}
+    \\ &= e^{-i\theta_0}\left(u_r + iv_r\right)
+  \end{align*}
+  Along the circle $r = r_0$: $z - z_0 = r_0\left(e^{i\theta} - e^{i\theta_0}\right)$, and
+  $\frac{e^{i\theta} - e^{i\theta_0}}{\theta - \theta_0} \to ie^{i\theta_0}$, so
+  \begin{align*}
+    f'(z_0)
+    &= \lim_{\theta \to \theta_0} \frac{\left[u(r_0,\theta) - u(r_0,\theta_0)\right] + i\left[v(r_0,\theta) - v(r_0,\theta_0)\right]}{\theta - \theta_0}
+       \cdot \frac{\theta - \theta_0}{r_0\left(e^{i\theta} - e^{i\theta_0}\right)}
+    \\ &= \frac{u_\theta + iv_\theta}{ir_0e^{i\theta_0}}
+    \\ &= e^{-i\theta_0}\,\frac{1}{r_0}\left(v_\theta - iu_\theta\right)
+  \end{align*}
+  Both are equal to $f'(z_0)$, so match real and imaginary parts:
+  \begin{align*}
+    \text{Re:} \quad & u_r = \frac{1}{r}v_\theta
+    \\ \text{Im:} \quad & v_r = -\frac{1}{r}u_\theta
+  \end{align*}
+\end{solution}
+
+\subsection*{2.4.10}
+Show that if $f(z)$ is analytic and real-valued in a domain $D$, then $f(z)$ is
+constant in $D$.
+\begin{solution}
+  Write $f(z)$ as its real and imaginary components:
+  \[
+    f(z) = u(z) + iv(z)
+  \]
+  If $f(z) \in \mathbb{R}$, then $v(z) = 0$.
+
+  As $f$ is analytic, it satisfies Cauchy-Riemann, so
+  \begin{align*}
+    0 &= v_y = u_x
+    \\ 0 &= v_x = -u_y
+  \end{align*}
+  So the partials of $u$ in $x$ and $y$ are both $0$.
+
+  Integrate both components to find $u$:
+  \begin{align*}
+    u &= \int u_x \, dx = \int 0 \, dx = C_1 + g(y)
+    \\ u &= \int u_y \, dy = \int 0 \, dy = C_2 + h(x)
+  \end{align*}
+  Setting equal:
+  \[
+    u(x + iy) = C_1 + g(y) = C_2 + h(x)
+  \]
+  Since this holds for all $x, y$, both sides must equal the same constant, so $g$
+  and $h$ are constant. Thus $u = C$ and $f = C + 0i$ is constant.
+\end{solution}
+
+% ============================================================
+\section*{Additional Problem}
+
+\subsection*{Rotation}
+Let $f(z)$ be analytic in a domain $D$. Prove that $e^{i\theta_0} f(z)$ is
+analytic in $D$, where $\theta_0$ is a real constant.
+\begin{proof}
+  Let $f(z) = g(z) + ih(z)$ be analytic on $D$, with $g, h$ real.
+
+  Expand $e^{i\theta} f(z)$ using Euler's identity:
+  \begin{align*}
+    e^{i\theta} f(z)
+    &= (\cos\theta + i\sin\theta)\left[g(z) + ih(z)\right]
+    \\ &= \underbrace{g\cos\theta - h\sin\theta}_{u(z)}
+       + i\,\underbrace{\left(g\sin\theta + h\cos\theta\right)}_{v(z)}
+  \end{align*}
+  Check Cauchy-Riemann:
+  \begin{align*}
+    u_x &= g_x\cos\theta - h_x\sin\theta
+    \\ v_y &= g_y\sin\theta + h_y\cos\theta
+  \end{align*}
+  Because $h_y = g_x$ and $g_y = -h_x$ (since $f$ is analytic):
+  \[
+    v_y = -h_x\sin\theta + g_x\cos\theta = u_x
+  \]
+  Same for the other Cauchy-Riemann equation:
+  \begin{align*}
+    u_y &= g_y\cos\theta - h_y\sin\theta
+    \\ -v_x &= -g_x\sin\theta - h_x\cos\theta = -h_y\sin\theta + g_y\cos\theta = u_y
+  \end{align*}
+  The partials of $u, v$ are linear combinations of the partials of $g, h$, which
+  are continuous, so they are continuous too.
+
+  Thus $e^{i\theta} f(z)$ is analytic on $D$.
+\end{proof}
+
+% ============================================================
+\section*{Section 2.4 (cont.)}
+
+\subsection*{2.4.14}
+Show that if the analytic function $w = f(z)$ maps a domain $D$ onto a portion
+of a line, then $f$ must be constant throughout $D$.
+\begin{proof}
+  Write the line as $\left\{a + te^{i\alpha} : t \in \mathbb{R}\right\}$ for some
+  fixed $a \in \mathbb{C}$ and $\alpha \in \mathbb{R}$. Then for each $z \in D$,
+  \[
+    f(z) = a + t(z)\,e^{i\alpha}, \qquad t(z) \in \mathbb{R}
+  \]
+  Define
+  \[
+    g(z) = e^{-i\alpha}\left(f(z) - a\right)
+  \]
+  We know that $g$ is analytic on $D$ because $a$ and $e^{-i\alpha}$ are constants,
+  and adding or multiplying by constants does not change whether a function is
+  analytic (previous problem). Then
+  \[
+    g(z) = e^{-i\alpha}\left(t(z)\,e^{i\alpha}\right) = t(z) \in \mathbb{R}
+  \]
+  An analytic function that is real-valued on a domain is constant (2.4.10), so
+  $g(z) = C$ for some $C \in \mathbb{R}$. Thus
+  \[
+    f(z) = a + e^{i\alpha} g(z) = a + Ce^{i\alpha}
+  \]
+  which is constant throughout $D$.
+\end{proof}
+
+\end{document}
