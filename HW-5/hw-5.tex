@@ -1,0 +1,355 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{solution}{
+\begin{proof}[Solution]}{
+\end{proof}}
+
+\begin{document}
+
+% ============================================================
+\section*{Problem 1}
+Where differentiable? Analytic?
+
+\subsubsection*{1 (a)}
+\[
+  f(z) = z \operatorname{Im}(z)
+\]
+\begin{solution}
+  Write $z = x + iy$ so $\operatorname{Im}(z) = y$:
+  \begin{align*}
+    f(x + iy)
+    &= (x + iy)y
+    \\ &= xy + iy^2
+  \end{align*}
+  So $u = xy$ and $v = y^2$. Compute partials for Cauchy-Riemann:
+  \begin{align*}
+    u_x &= y & v_y &= 2y
+    \\ u_y &= x & v_x &= 0
+  \end{align*}
+  CR requires $u_x = v_y$ and $u_y = -v_x$:
+  \begin{align*}
+    y = 2y &\implies y = 0
+    \\ x = -0 &\implies x = 0
+  \end{align*}
+  The partials are continuous everywhere, so $f$ is differentiable only at
+  $x = 0, y = 0$.
+
+  Analytic nowhere, because $z = 0$ is the only point where $f$ is
+  differentiable and a single point can't contain any open disk of
+  differentiability.
+\end{solution}
+
+\subsubsection*{1 (b)}
+\[
+  f(z) = \left(\operatorname{Re}(z)\right)^2 + \left(\operatorname{Im}(z)\right)^2
+\]
+\begin{solution}
+  Write $z$ as $x + iy$ and compute partials:
+  \[
+    f(x + iy) = x^2 + y^2
+  \]
+  So $u = x^2 + y^2$ and $v = 0$.
+  \begin{align*}
+    u_x &= 2x & v_y &= 0
+    \\ u_y &= 2y & v_x &= 0
+  \end{align*}
+  $u_x = v_y \implies 2x = 0 \implies x = 0$ and
+  $u_y = -v_x \implies 2y = 0 \implies y = 0$. So CR holds only at
+  $x = 0, y = 0$, and since the partials are continuous everywhere, $f$ is
+  differentiable there.
+
+  Differentiable only at $z = 0$.
+
+  Analytic nowhere, for the same reason as (a): no open disk of
+  differentiability exists around $z = 0$.
+\end{solution}
+
+% ============================================================
+\section*{Problem 2 (Section 2.4)}
+
+\subsection*{2 (a) --- 2.4.8}
+$f$ analytic in $D$, $\operatorname{Re} f$ or $\operatorname{Im} f$ constant
+$\implies f$ constant in $D$.
+\begin{proof}
+  Assume $f$ is analytic in a domain $D$ and either $\operatorname{Re}(f)$ or
+  $\operatorname{Im}(f)$ is constant. Show $f$ is constant.
+
+  Write $f(z)$ via its real and imaginary parts:
+  \[
+    f(z) = u(x, y) + iv(x, y)
+  \]
+  We know either $u$ or $v$ is constant because $\operatorname{Re}(f(z)) = u$
+  or $\operatorname{Im}(f(z)) = v$ is constant.
+
+  Since $f$ is analytic in $D$, the Cauchy-Riemann equations hold everywhere in
+  $D$:
+  \[
+    u_x = v_y \qquad u_y = -v_x
+  \]
+
+  \textbf{Case: $u$ is constant.} Then $u_x = u_y = 0$, so by CR:
+  \begin{align*}
+    v_y &= u_x = 0
+    \\ v_x &= -u_y = 0
+  \end{align*}
+
+  \textbf{Case: $v$ is constant.} Then $v_x = v_y = 0$, so by CR:
+  \begin{align*}
+    u_x &= v_y = 0
+    \\ u_y &= -v_x = 0
+  \end{align*}
+
+  In both cases $u_x = u_y = v_x = v_y = 0$ throughout $D$. So $u$ is constant
+  in $x$ and $y$, and thus constant. Likewise $v$ is constant in $x$ and $y$,
+  and thus constant.
+
+  So $f(z) = u + iv$ must be constant.
+\end{proof}
+
+\subsection*{2 (b) --- 2.4.14}
+$f$ analytic, maps $D$ onto part of a line $\implies f$ constant in $D$.
+\begin{proof}
+  Assume $f$ is analytic and maps all points to a line. Without loss of
+  generality take the line $f(z)$ maps onto for $z \in D$:
+  \[
+    f(D) \subseteq L
+    \quad \text{with} \quad
+    L = \left\{\lambda e^{ia} + b : \lambda \in \mathbb{R}\right\}
+  \]
+  with constants $a \in \mathbb{R}$, $b \in \mathbb{C}$.
+
+  If $f$ is analytic, multiplying by and adding constants remains analytic. So
+  $g(z)$ is analytic:
+  \begin{align*}
+    g(z)
+    &= f(z) \cdot e^{-ia} - be^{-ia}
+    \\ &= \lambda
+  \end{align*}
+  As $\lambda$ is real, $g(z)$ is real valued. By Problem 10 (2.4.10, shown in
+  the previous HW), $g(z)$ is constant. As $f(z) = g(z)c + d$ for constants
+  $c, d$, $f$ is constant.
+\end{proof}
+
+% ============================================================
+\section*{Problem 3 (Section 2.5)}
+
+\subsection*{3 (a) --- 2.5.2}
+Most general harmonic $p(x, y) = ax^2 + bxy + cy^2$.
+\begin{solution}
+  Take the second partials:
+  \begin{align*}
+    p_{xx} &= 2a
+    \\ p_{yy} &= 2c
+  \end{align*}
+  $p$ is harmonic when $p_{xx} + p_{yy} = 0$:
+  \begin{align*}
+    p_{xx} + p_{yy} &= 2a + 2c = 0
+    \\ \implies a &= -c
+  \end{align*}
+  The $bxy$ term does not appear in $p_{xx}$ or $p_{yy}$, so $b$ is
+  unconstrained. So all harmonic homogeneous degree 2 polynomials can be
+  written as:
+  \[
+    p(x, y) = ax^2 + bxy - ay^2 \quad \text{for some } a, b \in \mathbb{R}
+  \]
+\end{solution}
+
+\subsection*{3 (b) --- 2.5.6}
+$v$ harmonic conjugate of $u$ in $D$ $\implies uv$ harmonic in $D$.
+\begin{proof}
+  As $v$ is the harmonic conjugate of $u$, both must be harmonic and $f$ must
+  be analytic:
+  \[
+    f(x, y) = u + iv \text{ is analytic}
+  \]
+  Because both are harmonic:
+  \[
+    u_{xx} + u_{yy} = 0 \qquad v_{xx} + v_{yy} = 0
+  \]
+  Finally, because $f$ is analytic it satisfies Cauchy-Riemann:
+  \begin{align*}
+    u_x &= v_y
+    \\ u_y &= -v_x
+  \end{align*}
+  Computing the partials of $g(x, y) = uv$:
+  \begin{align*}
+    g_x &= u_x v + v_x u
+    \\ g_{xx} &= (u_{xx} v + v_x u_x) + (v_{xx} u + u_x v_x)
+    \\ &= u_{xx} v + 2 v_x u_x + v_{xx} u
+  \end{align*}
+  Similarly:
+  \[
+    g_{yy} = u_{yy} v + 2 v_y u_y + v_{yy} u
+  \]
+  Summing the partials:
+  \begin{align*}
+    g_{xx} + g_{yy}
+    &= v(u_{xx} + u_{yy}) + 2(u_x v_x + u_y v_y)
+    \\ &\quad + u(v_{xx} + v_{yy})
+    \\ &= 0 + 0 + 2(u_x v_x + u_y v_y)
+    && \text{definition of harmonic (above)}
+    \\ &= 2\big(u_x v_x + (-v_x)(u_x)\big)
+    && \text{Cauchy-Riemann (above)}
+    \\ &= 0
+  \end{align*}
+  As $g_{xx} + g_{yy} = 0$, $g(x, y) = uv$ is harmonic in $D$.
+\end{proof}
+
+% ============================================================
+\section*{Problem 4}
+Is $u$ harmonic on $\mathbb{C}$? If so, find a harmonic conjugate.
+
+\subsubsection*{4 (a)}
+\[
+  u(x, y) = 2x - x^3 + 3xy^2
+\]
+\begin{solution}
+  Consider $x, y \in \mathbb{R}$ and take the 2nd partials of $u$:
+  \begin{align*}
+    u_{xx} &= -6x
+    \\ u_{yy} &= 6x
+  \end{align*}
+  So $u_{xx} + u_{yy} = 0$ and $u$ is harmonic in the entire plane.
+  \[
+    f(x, y) = 2x - x^3 + 3xy^2 + iv(x, y)
+  \]
+  By CR:
+  \begin{align*}
+    u_x &= 2 - 3x^2 + 3y^2 = v_y
+    \\ u_y &= 6xy = -v_x
+  \end{align*}
+  Integrating each:
+  \begin{align*}
+    v &= \int v_y \, dy = 2y - 3x^2 y + y^3 + h(x)
+    \\ v &= \int v_x \, dx = \int -6xy \, dx = -3x^2 y + k(y)
+  \end{align*}
+  Comparing, $h(x) = C$ and $k(y) = 2y + y^3 + C$. Thus:
+  \[
+    v(x, y) = 2y + y^3 - 3x^2 y + C
+  \]
+  is the harmonic conjugate.
+\end{solution}
+
+\subsubsection*{4 (b)}
+\[
+  u(x, y) = 3x - x^3 + 3xy^2
+\]
+\begin{solution}
+  Consider $x, y \in \mathbb{R}$ and take the 2nd partials of $u$:
+  \begin{align*}
+    u_{xx} &= -6x
+    \\ u_{yy} &= 6x
+  \end{align*}
+  So $u_{xx} + u_{yy} = 0$ and $u$ is harmonic in the entire plane.
+  \[
+    f(x, y) = 3x - x^3 + 3xy^2 + iv(x, y)
+  \]
+  By CR:
+  \begin{align*}
+    u_x &= 3 - 3x^2 + 3y^2 = v_y
+    \\ u_y &= 6xy = -v_x
+  \end{align*}
+  Integrating each:
+  \begin{align*}
+    v &= \int v_y \, dy = 3y - 3x^2 y + y^3 + h(x)
+    \\ v &= \int v_x \, dx = \int -6xy \, dx = -3x^2 y + k(y)
+  \end{align*}
+  Comparing these expressions for $v$: $h(x) = C$ and $k(y) = 3y + y^3 + C$.
+  Thus:
+  \[
+    v(x, y) = 3y + y^3 - 3x^2 y + C
+  \]
+  is the harmonic conjugate.
+\end{solution}
+
+\subsubsection*{4 (c)}
+\[
+  u(x, y) = 3x - 2x^3 + 3xy^2
+\]
+\begin{solution}
+  Consider $x, y \in \mathbb{R}$:
+  \begin{align*}
+    u_{xx} &= -12x
+    \\ u_{yy} &= 6x
+  \end{align*}
+  So $u_{xx} + u_{yy} = -6x$, which is not $0$ for $x \neq 0$. Thus $u$ is not
+  harmonic in the entire plane, and it has no harmonic conjugate.
+\end{solution}
+
+% ============================================================
+\section*{Problem 5}
+Factor into linear/quadratic factors with real coefficients, if possible.
+
+\subsubsection*{5 (a)}
+\[
+  p(z) = z^3 + z - 2
+\]
+\begin{solution}
+  Because $p(z)$ has real coefficients it can be factored into linear and
+  quadratic terms with real coefficients. We can attempt to find these roots by
+  guessing and checking using polynomial long division.
+
+  Guess: $(z - 1)$. With polynomial long division we obtain the factorization:
+  \[
+    p(z) = (z - 1)(z^2 + z + 2)
+  \]
+\end{solution}
+
+\subsubsection*{5 (b)}
+\[
+  p(z) = (z - i)^2 + 2iz
+\]
+\begin{solution}
+  Expanding $p(z)$:
+  \begin{align*}
+    p(z)
+    &= (z - i)^2 + 2iz
+    \\ &= z^2 - 2zi - 1 + 2zi
+    \\ &= z^2 - 1
+    \\ &= (z - 1)(z + 1)
+  \end{align*}
+\end{solution}
+
+% ============================================================
+\section*{Problem 6}
+Taylor form centered at $z_0$.
+
+\subsubsection*{6 (a)}
+\[
+  p(z) = iz^3 - 5z + 2, \quad z_0 = i
+\]
+\begin{solution}
+  Compute each derivative and evaluate at $z_0 = i$:
+  \begin{align*}
+    p(z) &= iz^3 - 5z + 2 & p(i) &= i(i^3) - 5i + 2 = 1 - 5i + 2 = 3 - 5i
+    \\ p'(z) &= 3iz^2 - 5 & p'(i) &= 3i(i^2) - 5 = -5 - 3i
+    \\ p''(z) &= 6iz & p''(i) &= 6i(i) = -6
+    \\ p'''(z) &= 6i & p'''(i) &= 6i
+  \end{align*}
+  All further derivatives are equal to $0$. Substituting:
+  \begin{align*}
+    p(z)
+    &= (3 - 5i) + (-5 - 3i)(z - i) + \frac{1}{2}(-6)(z - i)^2
+    + \frac{1}{6}(6i)(z - i)^3
+    \\ &= (3 - 5i) + (-5 - 3i)(z - i) - 3(z - i)^2 + i(z - i)^3
+  \end{align*}
+  This expansion is exact because all further derivatives are equal to $0$, so
+  terms with degree greater than 3 in the expansion are equal to $0$.
+\end{solution}
+
+\subsubsection*{6 (b)}
+\[
+  p(z) = 3i, \quad z_0 = 7 + 5i
+\]
+\begin{solution}
+  $p(z) = 3i$ is a constant, so all derivatives are equal to zero at any point.
+  Thus the Taylor expansion is just $p(z) = 3i$.
+\end{solution}
+
+\end{document}

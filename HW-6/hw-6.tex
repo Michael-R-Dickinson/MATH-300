@@ -1,0 +1,364 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{solution}{
+\begin{proof}[Solution]}{
+\end{proof}}
+
+\title{MATH 300 --- HW 6}
+\author{Michael Dickinson}
+\date{}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\section*{Section 3.2}
+
+\subsection*{3.2.5}
+Write as $a + bi$.
+
+\subsubsection*{3.2.5 (c)}
+\[ \sin(2i) \]
+\begin{solution}
+  \begin{align*}
+    \sin(2i) & = \frac{e^{-2}-e^{2}}{2i} \\
+    & = -\frac{1}{2}\left(e^{-2}-e^{2}\right)i && \text{since } \frac{1}{i}=-i
+  \end{align*}
+\end{solution}
+
+\subsubsection*{3.2.5 (d)}
+\[ \cos(1 - i) \]
+\begin{solution}
+  Using $\cos z=\frac{e^{iz}+e^{-iz}}{2}$:
+  \begin{align*}
+    \cos(1-i) & = \frac{e^{1+i}+e^{-1-i}}{2} \\
+    & = \frac{1}{2}\left(e^{1}e^{i}+e^{-1}e^{-i}\right) \\
+    & = \frac{1}{2}\left[e^{1}(\cos 1+i\sin 1)+e^{-1}(\cos 1-i\sin 1)\right] && \text{Euler's formula} \\
+    & = \frac{e^{1}+e^{-1}}{2}\cos 1+i\,\frac{e^{1}-e^{-1}}{2}\sin 1
+  \end{align*}
+\end{solution}
+
+\subsection*{3.2.9}
+Find $dw/dz$.
+
+\subsubsection*{3.2.9 (a)}
+\[ w = \exp(\pi z^2) \]
+\begin{solution}
+  By the chain rule:
+  \[
+    w=e^{\pi z^2} \qquad \frac{dw}{dz}=2\pi z\,e^{\pi z^2}
+  \]
+\end{solution}
+
+\subsubsection*{3.2.9 (b)}
+\[ w = \cos(2z) + i \sin(1/z) \]
+\begin{solution}
+  Chain rule on each term:
+  \[
+    w=\cos(2z)+i\sin\left(\frac{1}{z}\right)
+  \]
+  \[
+    \frac{dw}{dz}=-2\sin(2z)-\frac{i}{z^2}\cos\left(\frac{1}{z}\right)
+  \]
+\end{solution}
+
+\subsubsection*{3.2.9 (c)}
+\[ w = \exp[\sin(2z)] \]
+\begin{solution}
+  By the chain rule:
+  \[
+    w=e^{\sin(2z)}
+  \]
+  \[
+    \frac{dw}{dz}=2\cos(2z)\,e^{\sin(2z)}
+  \]
+\end{solution}
+
+\subsection*{3.2.17}
+Find all $z$ (if any).
+
+\subsubsection*{3.2.17 (b)}
+\[ e^{iz} = 3 \]
+\begin{solution}
+  \begin{align*}
+    e^{iz} & = 3 \\
+    & = 3e^{2\pi ki} \\
+    & = e^{\ln 3+2\pi ki} && \text{since } 3=e^{\ln 3}
+  \end{align*}
+  \begin{align*}
+    \implies iz & = \ln 3+2\pi ki \\
+    z & = 2\pi k-i\ln 3 \quad \text{for } k\in\mathbb{Z} && \text{since } \frac{1}{i}=-i
+  \end{align*}
+\end{solution}
+
+\subsubsection*{3.2.17 (c)}
+\[ \cos z = i \sin z \]
+\begin{solution}
+  \[
+    \cos(z)=i\sin(z)
+  \]
+  Using the exponential forms of sin and cos:
+  \begin{align*}
+    \frac{e^{iz}+e^{-iz}}{2} & = i\,\frac{e^{iz}-e^{-iz}}{2i} \\
+    e^{iz}+e^{-iz} & = e^{iz}-e^{-iz} \\
+    2e^{-iz} & = 0
+  \end{align*}
+  $e^{w}$ is never 0 so no solutions.
+\end{solution}
+
+\subsection*{3.2.18}
+Prove. (Hint: $f'(0) = \lim_{z \to 0} [f(z) - f(0)]/z$.)
+
+\subsubsection*{3.2.18 (a)}
+\[ \lim_{z \to 0} \frac{\sin z}{z} = 1 \]
+\begin{solution}
+  Show:
+  \[
+    \lim_{z\to0}\frac{\sin z}{z}=1
+  \]
+  By the definition of the derivative:
+  \[
+    f'(0)=\lim_{z\to0}\frac{f(z)-f(0)}{z}
+  \]
+  Let $f(z)=\sin(z)$, so $f'(z)=\cos(z)$:
+  \begin{align*}
+    f'(0)=\cos(0)=1 & = \lim_{z\to0}\frac{f(z)-f(0)}{z} \\
+    & = \lim_{z\to0}\frac{\sin(z)-0}{z} \\
+    & = \lim_{z\to0}\frac{\sin(z)}{z}
+  \end{align*}
+\end{solution}
+
+\subsubsection*{3.2.18 (b)}
+\[ \lim_{z \to 0} \frac{\cos z - 1}{z} = 0 \]
+\begin{solution}
+  Let $f(z)=\cos(z)$, so $f'(z)=-\sin(z)$:
+  \begin{align*}
+    f'(0)=-\sin(0)=0 & = \lim_{z\to0}\frac{f(z)-f(0)}{z} \\
+    & = \lim_{z\to0}\frac{\cos(z)-1}{z}
+  \end{align*}
+\end{solution}
+
+% ============================================================
+\section*{Section 3.3}
+
+\subsection*{3.3.4}
+Prove $\operatorname{Log} e^z = z \iff -\pi < \operatorname{Im} z \le \pi$.
+\begin{solution}
+  Show:
+  \[
+    \text{Log}\, e^{z}=z \iff -\pi<\text{Im}\, z\leq\pi
+  \]
+  Write $z=x+iy$.
+
+  \textbf{($\implies$)}
+  Assume $\text{Log}\, e^{z}=z$:
+  \begin{align*}
+    \text{Log}\, e^{z} & = z \\
+    \log|e^{z}|+i\,\text{Arg}(e^{z}) & = z && \text{def of Log} \\
+    \text{Arg}(e^{z}) & = \text{Im}(z) && \text{take imaginary of both sides}
+  \end{align*}
+  $\text{Arg}(e^{z})$ is bounded as $-\pi<\text{Arg}(w)\leq\pi$ for any $w$, so $\text{Im}(z)$ is bounded the same.
+
+  \textbf{($\impliedby$)}
+  Assume $-\pi<\text{Im}\, z\leq\pi$:
+  \[
+    \text{Log}\, e^{z}=\log(|e^{z}|)+i\,\text{Arg}(e^{z})
+  \]
+  Note that Arg selects the branch of $\arg(e^{z})$ such that $e^{z}=e^{x}e^{iy+2k\pi i}$ has $k=0$, since $-\pi<y\leq\pi$. So:
+  \begin{align*}
+    \text{Log}\, e^{z} & = \log(|e^{x}|)+iy \\
+    & = x+iy \\
+    & = z
+  \end{align*}
+\end{solution}
+
+\subsection*{3.3.6}
+Find the error in the ``proof'' that $z = -z$:
+$z^2 = (-z)^2 \Rightarrow 2 \operatorname{Log} z = 2 \operatorname{Log}(-z)
+\Rightarrow \operatorname{Log} z = \operatorname{Log}(-z)
+\Rightarrow z = e^{\operatorname{Log} z} = e^{\operatorname{Log}(-z)} = -z$.
+\begin{solution}
+  $\text{Log}(z^2) \neq 2\,\text{Log}(z)$ in general. This is because the argument of $z^2$ isn't necessarily in $(-\pi, \pi]$ so it could end up going over the discontinuity in Log.
+\end{solution}
+
+\subsection*{3.3.9}
+Domain of analyticity of $f(z) = \operatorname{Log}(4 + i - z)$; compute $f'(z)$.
+\begin{solution}
+  $f(z)=\text{Log}(4+i-z)$, compute $f'$.
+
+  $\text{Log}(w)$ is non-analytic on $w\leq0$ (the negative real axis and 0).
+  So solve:
+  \begin{align*}
+    w=4+i-z & \leq 0 \\
+    4+i & \leq z && \text{i.e. } z-(4+i) \text{ is real and } \geq0
+  \end{align*}
+  Breaks into equations:
+  \begin{align*}
+    \text{Im}(z) & = 1 \\
+    \text{Re}(z) & \geq 4
+  \end{align*}
+  So $f$ is analytic on:
+  \[
+    \mathbb{C}\setminus\{x+iy : x\geq4 \text{ and } y=1\}
+  \]
+  By the chain rule, with $\frac{d}{dw}\text{Log}(w)=\frac{1}{w}$:
+  \[
+    \frac{df}{dz}=\frac{-1}{4+i-z}
+  \]
+\end{solution}
+
+\subsection*{3.3.11}
+Branch of $\log(z^2 + 2z + 3)$ analytic at $z = -1$; find its derivative there.
+\begin{solution}
+  $\log(z^2+2z+3)$ analytic at $z=-1$, and find $f'(-1)$.
+
+  Input $-1$:
+  \[
+    z^2+2z+3=1-2+3=2>0
+  \]
+  So the principal branch works, since 2 is not on the branch cut of Log (the non-positive real axis).
+
+  By the chain rule:
+  \[
+    \frac{df}{dz}=\frac{2z+2}{z^2+2z+3}
+  \]
+  \[
+    f'(-1)=\frac{2(-1)+2}{2}=0
+  \]
+\end{solution}
+
+\subsection*{3.3.13}
+Branch of $\log(2z - 1)$ analytic everywhere except on the given ray.
+
+\subsubsection*{3.3.13 (a)}
+\[ \{x + iy : x \le \tfrac{1}{2},\ y = 0\} \]
+\begin{solution}
+  $x\leq\frac{1}{2}, y=0 \implies w$ is real and $\leq0$ (non-positive real axis).
+  This is the principal branch cut, so:
+  \[
+    \text{Log}(2z-1)=\log|2z-1|+i\,\text{Arg}(2z-1), \quad -\pi<\text{Arg}\leq\pi
+  \]
+\end{solution}
+
+\subsubsection*{3.3.13 (b)}
+\[ \{x + iy : x \ge \tfrac{1}{2},\ y = 0\} \]
+\begin{solution}
+  $x\geq\frac{1}{2}, y=0 \implies w$ is real and $\geq0$.
+  Put the cut there by taking $\arg$ in $(0,2\pi]$:
+  \[
+    \log(2z-1)=\log|2z-1|+i\arg(2z-1), \quad 0<\arg\leq2\pi
+  \]
+\end{solution}
+
+\subsubsection*{3.3.13 (c)}
+\[ \{x + iy : x = \tfrac{1}{2},\ y \ge 0\} \]
+\begin{solution}
+  $x=\frac{1}{2}, y\geq0 \implies w=2iy$ with $y\geq0$.
+  Put the cut there by taking $\arg$ in $(-\frac{3\pi}{2},\frac{\pi}{2}]$:
+  \[
+    \log(2z-1)=\log|2z-1|+i\arg(2z-1), \quad -\frac{3\pi}{2}<\arg\leq\frac{\pi}{2}
+  \]
+\end{solution}
+
+% ============================================================
+\section*{Section 3.5}
+
+\subsection*{3.5.1 (c)}
+All values of $2^{\pi i}$.
+\begin{solution}
+  Using $z^{\alpha}=e^{\alpha\log z}$ with $\log 2=\ln 2+2\pi ki$:
+  \begin{align*}
+    2^{\pi i} & = e^{\pi i\log 2} \\
+    & = e^{\pi i(\ln 2+2\pi ki)} \\
+    & = e^{i\pi\ln 2-2\pi^2 k}
+  \end{align*}
+  for $k\in\mathbb{Z}$.
+\end{solution}
+
+\subsection*{3.5.3 (b)}
+Principal value of $i^{2i}$.
+\begin{solution}
+  Using the principal branch $z^{\alpha}=e^{\alpha\,\text{Log}\, z}$ with $\text{Log}\, i=\ln|i|+i\frac{\pi}{2}=i\frac{\pi}{2}$:
+  \begin{align*}
+    i^{2i} & = e^{2i\,\text{Log}\, i} \\
+    & = e^{2i\cdot i\frac{\pi}{2}} \\
+    & = e^{-\pi}
+  \end{align*}
+\end{solution}
+
+\subsection*{3.5.6 (b)}
+Principal branches, $z \ne 0$: show $z^\alpha z^\beta = z^{\alpha + \beta}$.
+\begin{solution}
+  Using the principal branch $z^{\alpha}=e^{\alpha\,\text{Log}\, z}$
+  \begin{align*}
+    z^{\alpha}z^{\beta} & = e^{\alpha\,\text{Log}\, z}\,e^{\beta\,\text{Log}\, z} \\
+    & = e^{(\alpha+\beta)\text{Log}\, z} && e^{a}e^{b}=e^{a+b} \\
+    & = z^{\alpha+\beta}
+  \end{align*}
+\end{solution}
+
+\subsection*{3.5.7}
+Derivative of principal branch of $z^{1+i}$ at $z = i$.
+\begin{solution}
+  Using the principal branch $z^{1+i}=e^{(1+i)\text{Log}\, z}$ which is analytic at $z=i$ since $i$ is not $< 0$.
+  Differentiating:
+  \[
+    \frac{d}{dz}z^{1+i}=\frac{1+i}{z}\,e^{(1+i)\text{Log}\, z}
+  \]
+  At $z=i$, with $\text{Log}\, i=i\frac{\pi}{2}$:
+  \begin{align*}
+    (1+i)\text{Log}\, i & = (1+i)\,i\frac{\pi}{2}=-\frac{\pi}{2}+i\frac{\pi}{2} \\
+    e^{-\frac{\pi}{2}+i\frac{\pi}{2}} & = e^{-\frac{\pi}{2}}\,i && e^{i\frac{\pi}{2}}=i
+  \end{align*}
+  Thus:
+  \begin{align*}
+    f'(i) & = \frac{1+i}{i}\cdot e^{-\frac{\pi}{2}}\,i \\
+    & = (1+i)\,e^{-\frac{\pi}{2}}
+  \end{align*}
+\end{solution}
+
+% ============================================================
+\section*{Problem 5}
+Branch of $(4 + z^2)^{1/2}$ analytic in $D$.
+
+\subsubsection*{5 (a)}
+\[ D = \mathbb{C} \setminus \{iy : |y| \ge 2\} \]
+\begin{solution}
+  Trying the principal branch first
+  \[
+    (4+z^2)^{1/2}=e^{\frac{1}{2}\text{Log}(4+z^2)}
+  \]
+  $\text{Log}(w)$ is non-analytic on $w\leq0$, so solve:
+  \begin{align*}
+    4+z^2 & \leq 0 \\
+    z^2 & \leq -4
+  \end{align*}
+  $z^2$ is real and negative only when $z=iy$ (then $z^2=-y^2$), so $-y^2\leq-4 \implies |y|\geq2$.
+  This is exactly the set removed from $D$, so the principal branch works.
+\end{solution}
+
+\subsubsection*{5 (b)}
+\[ D = \mathbb{C} \setminus \{iy : |y| \le 2\} \]
+\begin{solution}
+  Factor $4+z^2=(z-2i)(z+2i)$ and take each square root separately:
+  \[
+    f(z)=(z-2i)^{1/2}(z+2i)^{1/2}=e^{\frac{1}{2}\left[\log(z-2i)+\log(z+2i)\right]}
+  \]
+  with both args taken in $(-\frac{\pi}{2},\frac{3\pi}{2}]$.
+
+  This puts the cut of $(z-2i)^{1/2}$ on the ray straight down from $2i$, and the cut of $(z+2i)^{1/2}$ on the ray straight down from $-2i$.
+
+  Below $-2i$ the two cuts overlap. Crossing there, each factor flips sign ($e^{\frac{1}{2}\cdot2\pi i}=-1$), so the product doesn't change:
+  \[
+    (-1)(-1)=1
+  \]
+  So $f$ is continuous (and analytic) across that part. The only remaining cut is the segment from $-2i$ to $2i$, which is the set removed from $D$.
+\end{solution}
+
+\end{document}
