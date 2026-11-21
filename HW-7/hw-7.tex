@@ -27,38 +27,128 @@ Evaluate.
 \subsubsection*{4.2.3 (b)}
 \[ \int_{-2}^{0} (1+i)\cos(it)\,dt \]
 \begin{solution}
+  Split by linearity, using $\int\cos(it)\,dt = \tfrac{1}{i}\sin(it) = -i\sin(it)$:
+  \begin{align*}
+    \int_{-2}^{0}(1+i)\cos(it)\,dt
+    & = \int_{-2}^{0} \cos(it)\,dt + i\int_{-2}^{0} \cos(it)\,dt \\
+    & = \Big[-i\sin(it) + \sin(it)\Big]_{-2}^{0} \\
+    & = -\big(-i\sin(-2i) + \sin(-2i)\big)
+      && \text{upper limit: } \sin(0)=0 \\
+    & = i\sin(-2i) - \sin(-2i)
+  \end{align*}
 \end{solution}
 
 \subsubsection*{4.2.3 (c)}
 \[ \int_{0}^{1} (1+2it)^5\,dt \]
 \begin{solution}
+  Substitute $u = 1+2it$, $du = 2i\,dt$:
+  \begin{align*}
+    \int_0^1 (1+2it)^5\,dt
+    & = \int \frac{1}{2i}u^5\,du && \text{$u$-sub} \\
+    & = \frac{1}{6}\cdot\frac{1}{2i}(1+2it)^6 \Big|_0^1 \\
+    & = \frac{1}{12i}(1+2i)^6 - \frac{1}{12i}(1) \\
+    & = \frac{1}{12i}\Big[(1+2i)^6 - 1\Big]
+  \end{align*}
 \end{solution}
 
 \subsection*{4.2.8}
 $C$ = square $0 \to 1 \to 1+i \to i$, once. Show $\oint_C e^z\,dz = 0$.
 \begin{solution}
+  Let $I = \int_\ell e^z\,dz$, where $\ell$ is the square $0 \to 1 \to 1+i \to i \to 0$.
+  Write the contour as straight line segments, each parametrized with $t \in [0,1]$:
+  \begin{align*}
+    \ell_1 & : 0 \to 1     & z(t) & = t       & z'(t) & = 1  \\
+    \ell_2 & : 1 \to 1+i   & z(t) & = 1+ti    & z'(t) & = i  \\
+    \ell_3 & : 1+i \to i   & z(t) & = 1-t+i   & z'(t) & = -1 \\
+    \ell_4 & : i \to 0     & z(t) & = i(1-t)  & z'(t) & = -i
+  \end{align*}
+  With $f(z) = e^z$ and $\int_\ell f\,dz = \int_0^1 f(z(t))\,z'(t)\,dt$:
+  \begin{align*}
+    I & = \int_{\ell_1} f(z)\,dz + \dots + \int_{\ell_4} f(z)\,dz \\
+      & = \int_0^1 e^t\,dt + \int_0^1 ie^{1+ti}\,dt + \int_0^1 -e^{1-t+i}\,dt + \int_0^1 -ie^{i(1-t)}\,dt \\
+      & = (e-1) + \frac{i}{i}\left(e^{1+i}-e\right) + \left(e^i - e^{1+i}\right) + \frac{-i}{-i}\left(1-e^i\right) \\
+      & = 0
+  \end{align*}
 \end{solution}
 
 \subsection*{4.2.9}
 $\int_\Gamma (x - 2xyi)\,dz$, $\Gamma: z = t + it^2$, $0 \le t \le 1$.
 \begin{solution}
+  On $\Gamma$: $x = t$, $y = t^2$, $t \in [0,1]$, so
+  \[
+    z(t) = t + it^2 \qquad z'(t) = 1 + 2it
+  \]
+  \begin{align*}
+    \int_\Gamma (x - 2xyi)\,dz
+    & = \int_0^1 \big(t - 2t(t^2)i\big)(1+2it)\,dt \\
+    & = \int_0^1 (t - 2it^3)(1+2it)\,dt \\
+    & = \int_0^1 \left(t - 2it^3 + 2it^2 + 4t^4\right)dt
+      && (-2it^3)(2it) = -4i^2t^4 = 4t^4 \\
+    & = \frac{1}{2}t^2 - \frac{1}{2}it^4 + \frac{2}{3}it^3 + \frac{4}{5}t^5 \Big|_0^1 \\
+    & = \frac{1}{2} - \frac{i}{2} + \frac{2}{3}i + \frac{4}{5} \\
+    & = \frac{13}{10} + \frac{1}{6}i
+  \end{align*}
 \end{solution}
 
 \subsection*{4.2.11}
 $\int_\Gamma (2z + 1)\,dz$, $\Gamma$ from $-i$ to $1$ along:
+
 \subsubsection*{4.2.11 (a)}
 Line segment.
 \begin{solution}
+  Parametrize the segment $\ell: -i \to 1$ using $(1-t)z_0 + tz_1$:
+  \begin{align*}
+    z(t)  & = (1-t)(-i) + t(1) = t + i(t-1) \qquad t \in [0,1] \\
+    z'(t) & = 1+i
+  \end{align*}
+  \begin{align*}
+    \int_\ell (2z+1)\,dz
+    & = \int_0^1 \Big(2\big(t + i(t-1)\big) + 1\Big)(1+i)\,dt \\
+    & = \int_0^1 2(1+i)\big[t + it - i\big]\,dt + \int_0^1 (1+i)\,dt \\
+    & = 2(1+i)\left[\frac{1}{2}t^2 + \frac{i}{2}t^2 - it\right]_0^1 + (1+i) \\
+    & = 2(1+i)\left(\frac{1}{2} + \frac{i}{2} - i\right) + (1+i) \\
+    & = (1+i)(1-i) + (1+i) \\
+    & = 3 + i
+  \end{align*}
 \end{solution}
 
 \subsubsection*{4.2.11 (b)}
 Segments $-i \to 0 \to 1$.
 \begin{solution}
+  Let $\ell_1: -i \to 0$ and $\ell_2: 0 \to 1$, with $t \in [0,1]$:
+  \begin{align*}
+    \ell_1 & : z(t) = i(t-1) & z'(t) & = i \\
+    \ell_2 & : z(t) = t      & z'(t) & = 1
+  \end{align*}
+  \begin{align*}
+    \int_{\ell_1} (2z+1)\,dz
+    & = \int_0^1 \big(2i(t-1) + 1\big)\,i\,dt \\
+    & = \int_0^1 \big(-2(t-1) + i\big)\,dt && i \cdot 2i = -2 \\
+    & = \Big[-t^2 + 2t + it\Big]_0^1 = 1 + i
+  \end{align*}
+  \[
+    \int_{\ell_2} (2z+1)\,dz = \int_0^1 (2t+1)\,dt = \Big[t^2 + t\Big]_0^1 = 2
+  \]
+  \[
+    \int_\ell (2z+1)\,dz = \int_{\ell_1} + \int_{\ell_2} = 3 + i
+  \]
 \end{solution}
 
 \subsubsection*{4.2.11 (c)}
 Arc $z = e^{it}$, $-\pi/2 \le t \le 0$.
 \begin{solution}
+  \[
+    z(t) = e^{it} \qquad z'(t) = ie^{it} \qquad t \in \left[-\tfrac{\pi}{2}, 0\right]
+  \]
+  \begin{align*}
+    \int_{-\pi/2}^{0} \left(2e^{it} + 1\right) ie^{it}\,dt
+    & = \int_{-\pi/2}^{0} \left(2ie^{2it} + ie^{it}\right)dt \\
+    & = \Big[e^{2it} + e^{it}\Big]_{-\pi/2}^{0}
+      && \textstyle\int ie^{it}\,dt = e^{it} \\
+    & = (1 + 1) - \left(e^{-i\pi} + e^{-i\pi/2}\right) \\
+    & = 2 - (-1 - i) \\
+    & = 3 + i
+  \end{align*}
 \end{solution}
 
 \subsection*{4.2.14}
@@ -67,11 +157,37 @@ Use Thm 5 (ML bound) to show:
 \subsubsection*{4.2.14 (a)}
 $C: |z| = 3$ once. $\left|\oint_C \frac{dz}{z^2 - i}\right| \le \frac{3\pi}{4}$.
 \begin{solution}
+  To maximize $\left|\frac{1}{z^2-i}\right|$ along $|z|=3$, minimize $|z^2-i|$ along $|z|=3$.
+  Bound:
+  \begin{align*}
+    |z^2| - |i| & \le |z^2 - i| && \text{reverse triangle inequality} \\
+    9 - 1 = 8   & \le |z^2 - i| && |z^2| = |z|^2 = 9
+  \end{align*}
+  \[
+    \left|\frac{1}{z^2-i}\right| \le \frac{1}{8}
+    \implies \max_{|z|=3}\left|\frac{1}{z^2-i}\right| \le \frac{1}{8} = M
+  \]
+  \begin{align*}
+    L  & = 2\pi(3) = 6\pi && \text{circumference} \\
+    ML & = \frac{6\pi}{8} = \frac{3\pi}{4}
+       && \text{Thm 5 (ML-inequality): } \left|\textstyle\int_C f\,dz\right| \le ML
+  \end{align*}
 \end{solution}
 
 \subsubsection*{4.2.14 (c)}
 $\Gamma$ = arc of $|z|=1$ in Q1. $\left|\int_\Gamma \operatorname{Log} z\,dz\right| \le \frac{\pi^2}{4}$.
 \begin{solution}
+  On $\Gamma$: $z = e^{i\theta}$, $\theta \in \left[0, \frac{\pi}{2}\right]$
+  (this stays off the branch cut, so $\operatorname{Log} z$ is continuous on $\Gamma$).
+  \begin{align*}
+    \operatorname{Log} z   & = \ln|z| + i\operatorname{Arg} z \\
+                           & = \ln 1 + i\theta = i\theta \\
+    |\operatorname{Log} z| & = \theta \le \frac{\pi}{2} = M
+  \end{align*}
+  \begin{align*}
+    L  & = \frac{1}{4}(2\pi) = \frac{\pi}{2} && \text{quarter circle} \\
+    ML & = \frac{\pi}{2}\cdot\frac{\pi}{2} = \frac{\pi^2}{4} && \text{Thm 5}
+  \end{align*}
 \end{solution}
 
 % ============================================================
@@ -84,37 +200,126 @@ Compute (explain why a table of integrals works).
 \subsubsection*{4.3.1 (a)}
 $\int (3z^2 - 5z + i)\,dz$, segment $i \to 1$.
 \begin{solution}
+  Let $f(z) = 3z^2 - 5z + i$, integrated along $\ell: i \to 1$.
+  Polynomials are entire, so $f$ is entire, so it has an antiderivative everywhere and the
+  integral is path independent.
+  \begin{align*}
+    F(z)        & = z^3 - \frac{5}{2}z^2 + iz \\
+    F(1) - F(i) & = \left(1 - \frac{5}{2} + i\right) - \left(-i + \frac{5}{2} - 1\right)
+                  && i^3 = -i,\ -\tfrac{5}{2}i^2 = +\tfrac{5}{2} \\
+                & = -3 + 2i
+  \end{align*}
 \end{solution}
 
 \subsubsection*{4.3.1 (c)}
 $\int 1/z\,dz$, any contour in right half-plane, $-3i \to 3i$.
 \begin{solution}
+  $f(z) = \frac{1}{z} \implies F(z) = \operatorname{Log} z$
+  ($\operatorname{Log}$ is analytic off its branch cut $(-\infty, 0]$, and $\ell$ stays in
+  the right half-plane).
+  \begin{align*}
+    F(3i) - F(-3i)
+    & = \operatorname{Log}(3i) - \operatorname{Log}(-3i) \\
+    & = \ln 3 + i\operatorname{Arg}(3i) - \ln 3 - i\operatorname{Arg}(-3i)
+      && \operatorname{Log} z = \ln|z| + i\operatorname{Arg} z \\
+    & = i\left(\frac{\pi}{2} - \left(-\frac{\pi}{2}\right)\right) = i\pi
+  \end{align*}
 \end{solution}
 
 \subsubsection*{4.3.1 (d)}
 $\oint \csc^2 z\,dz$, any closed contour avoiding $0, \pm\pi, \pm 2\pi, \dots$
 \begin{solution}
+  $f(z) = \csc^2 z \implies F(z) = -\cot z$, since
+  \[
+    \frac{d}{dz}(-\cot z) = \csc^2 z
+  \]
+  $F$ is analytic in $D = \mathbb{C} \setminus \{n\pi : n \in \mathbb{Z}\}$ (it only fails
+  where $\sin z = 0$), and $\Gamma$ lies in $D$.
+  A closed contour plus an antiderivative throughout $D$ gives (Corollary 2):
+  \[
+    \oint_\Gamma \csc^2 z\,dz = 0
+  \]
 \end{solution}
 
 \subsection*{4.3.4}
 T/F: $f$ analytic at each point of closed contour $\Gamma$ $\Rightarrow$ $\oint_\Gamma f\,dz = 0$.
 \begin{solution}
+  False. Counterexample:
+  \[
+    \oint_\ell \frac{1}{z-1}\,dz, \qquad \ell: |z-1| = 1 \ \text{(circle of radius 1 centered at 1)}
+  \]
+  This is $2\pi i \neq 0$, but $\frac{1}{z-1}$ is analytic on the circle. (Analytic on
+  $\Gamma$ isn't enough; the singularity $z=1$ is inside.)
 \end{solution}
 
 \subsection*{4.3.7}
 $C$ positive circle, $z_0$ outside $C$. Show $\oint_C \frac{dz}{z - z_0} = 0$.
 \begin{solution}
+  $\frac{1}{z - z_0}$ is analytic at all points of $D = \mathbb{C} \setminus \{z_0\}$.
+  Thus if $z_0$ is outside $C$, the function is analytic on the entire region within $C$,
+  so $C$ is continuously deformable to a point in $D$.
+  Thus, by the deformation invariance theorem,
+  \[
+    \oint_C \frac{dz}{z-z_0} = \int_\ell \frac{dz}{z-z_0}
+  \]
+  with $\ell$ a single point. Integrating over a single point gives $0$.
 \end{solution}
 
 \subsection*{4.3.10}
 $f$ continuous at $z$ $\Rightarrow$ $\int_0^1 f(z + t\Delta z)\,dt \to f(z)$ as $\Delta z \to 0$.
 \begin{solution}
+  Assume $f$ is continuous at $z$.
+  We will show that for all $\epsilon > 0$ there exists a $\delta > 0$ such that for all
+  $\Delta z$ with $|\Delta z| < \delta$:
+  \[
+    \left| \int_0^1 f(z + t\Delta z)\,dt - f(z) \right| \leq \epsilon
+  \]
+  Write the difference ($f(z)$ is constant in $t$):
+  \begin{align*}
+    \int_{0}^{1} f(z+t\Delta z)\,dt - f(z)
+    & = \int_{0}^{1} f(z+t\Delta z)\,dt - \int_{0}^{1} f(z)\,dt \\
+    & = \int_0^1 \big( f(z + t\Delta z) - f(z) \big)\,dt
+  \end{align*}
+  Take the magnitude of the expression and apply the triangle inequality:
+  \[
+    \left| \int_0^1 \big( f(z + t\Delta z) - f(z) \big)\,dt \right|
+    \leq \int_0^1 | f(z + t\Delta z) - f(z) |\,dt
+  \]
+  Because $f$ is continuous at $z$, for any $\epsilon_1 > 0$ there exists $\delta > 0$ such that
+  \[
+    | f(z + h) - f(z) | \leq \epsilon_1 \quad \forall h \text{ with } |h| < \delta
+  \]
+  Take $\epsilon_1 = \epsilon$, and take any $\Delta z$ with $|\Delta z| < \delta$.
+  Because $0 \leq t \leq 1$, we have $|t\Delta z| \leq |\Delta z| < \delta$, so using
+  $h = t\Delta z$:
+  \[
+    | f(z + t\Delta z) - f(z) | \leq \epsilon
+  \]
+  Then in our original expression:
+  \begin{align*}
+    \int_0^1 | f(z + t\Delta z) - f(z) |\,dt
+    & \leq \int_0^1 |\epsilon|\,dt \\
+    & = \int_0^1 \epsilon\,dt \\
+    & = \epsilon
+  \end{align*}
+  So for all $|\Delta z| < \delta$:
+  \[
+    \left| \int_0^1 f(z + t\Delta z)\,dt - f(z) \right| \leq \epsilon
+  \]
+  Thus:
+  \[
+    \lim_{\Delta z\to0} \int_0^1 f(z + t\Delta z)\,dt = f(z)
+  \]
 \end{solution}
 
 % ============================================================
 \section*{Extra}
 Does $f(z) = 1/z$ have an antiderivative on $D = \mathbb{C} \setminus \{0\}$? Why or why not?
 \begin{solution}
+  No.
+  If $f$ has an antiderivative in $D$, then every loop integral of $f$ in $D$ is $0$.
+  However, $\oint_{C} \frac{1}{z}\,dz = 2\pi i$ with $C$ the circle around $z=0$.
+  This is a contradiction, so there cannot be an antiderivative of $\frac{1}{z}$ in $D$.
 \end{solution}
 
 \end{document}
